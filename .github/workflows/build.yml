@@ -4,6 +4,7 @@ on:
   push:
     branches: 
       - develop
+      - develop-with-hacks
     paths-ignore:
       - '.gitignore'
       - 'CODEOWNERS'
@@ -13,6 +14,7 @@ on:
   pull_request:
     branches:
       - develop
+      - develop-with-hacks
     paths-ignore:
       - '.gitignore'
       - 'CODEOWNERS'
@@ -57,7 +59,7 @@ jobs:
 
   deploy:
     needs: [build]
-    if: github.event_name == 'push' && github.repository_owner == 'smallrye'
+    if: github.event_name == 'push' && github.repository_owner == 'jmartisk'
     runs-on: ubuntu-latest
 
     steps:
