@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>SmallRye</title>
+  <title>Fault Tolerance 4.1</title>
   <script id="adobe_dtm" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
   <script src="/assets/javascript/highlightjs-pack.js" type="text/javascript"></script>
   <META HTTP-EQUIV="Content-Security-Policy" CONTENT="default-src 'none'; script-src 'self' www.redhat.com assets.adobedtm.com jsonip.com ajax.googleapis.com www.googletagmanager.com www.google-analytics.com use.fontawesome.com; style-src 'self'  fonts.googleapis.com use.fontawesome.com; img-src 'self' *; media-src 'self' ; frame-src www.googletagmanager.com; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; font-src 'self' use.fontawesome.com fonts.gstatic.com;">
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
 
-<body class="homepage">
+<body class="post">
 
   <div class="content">
     <div class="navigation-wrapper">
@@ -37,7 +37,7 @@
               <a href="/community/" class="">Community</a>
             </li>
             <li>
-              <a href="/blog/" class="">Blog</a>
+              <a href="/blog/" class="active">Blog</a>
             </li>
           </ul>
         </nav>
@@ -46,98 +46,49 @@
   </div>
 </div>
 
-    <div class="smallrye-homepage">
-    <div class="grid-wrapper homepage-hero-band">
-    <div class="grid__item width-12-12">
-        <div class="home-hero">
-            <img src="/assets/images/smallrye_project_logo.svg" class="project-logo" title="SmallRye">
-            <h2>Helping Java Developers deliver for tomorrow</h2>
-            <p>APIs and implementations tailored for Cloud development,
-                <br/>including, but not limited to, <a href="http://microprofile.io/" target="_blank">Eclipse MicroProfile</a></p>
-            <a href="#" class="scroll-down" address="true"></a>
-        </div>
-    </div>
+    <div class="post-page grid-wrapper">
+  <div class="grid__item width-10-12 doc-content">
+    <h1>Fault Tolerance 4.1</h1>
+    <div class="paragraph">
+<p>MicroProfile Fault Tolerance 2.1 was released just 2 weeks ago, and it didn&#8217;t take us long to fully implement.
+Today, we announce availability of SmallRye Fault Tolerance 4.1, a compliant implementation of MicroProfile Fault Tolerance 2.1.
+Here&#8217;s a list of the important changes in the specification:</p>
 </div>
-
-    <div class="full-width-bg component homepage-highlights-band">
-    <div class="width-12-12 highlights-alternating-inline-block">
-
-        <div class="grid-wrapper">
-            <div class="width-4-12 width-12-12-m block-content">
-                <h2>Cloud Native development</h2>
-                <p>SmallRye improves the developer experience for
-                    Cloud Native development through innovation in the critical functionality
-                    required for Cloud environments.</p>
-            </div>
-            <div class="width-4-12 width-12-12-m block-content">
-                <h2>Community implementations</h2>
-                <p>SmallRye develops implementations of Eclipse MicroProfile APIs
-                    that are usable by any vendor or project.
-                    Come join the community to contribute to Cloud Native innovation!</p>
-            </div>
-            <div class="width-4-12 width-12-12-m block-content">
-                <h2>Containers are great!</h2>
-                <p>With containers being the new operating system,
-                    it's important that developers are able to build applications
-                    that can easily be deployed to container environments.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="grid-wrapper">
-        <div class="grid__item width-8-12 width-12-12-m">
-            <h2>SmallRye Usage</h2>
-            <p>SmallRye is included with the following projects, go check them out to use SmallRye in your applications!</p>
-        </div>
-    </div>
-    <div class="grid-wrapper used-by-band">
-        <div class="grid__item width-2-12 width-4-12-m block">
-            <a href="https://quarkus.io/" target="_blank">
-                <img src="/assets/images/logoset_quarkus.png">
-                <span>Quarkus</span>
-            </a>
-        </div>
-        <div class="grid__item width-2-12 width-4-12-m block">
-            <a href="http://thorntail.io" target="_blank">
-                <img src="/assets/images/logoset_thorntail.png">
-                <span>Thorntail</span>
-            </a>
-        </div>
-        <div class="grid__item width-2-12 width-4-12-m block">
-            <a href="https://wildfly.org" target="_blank">
-                <img src="/assets/images/logoset_wildfly.png">
-                <span>WildFly</span>
-            </a>
-        </div>
-        <div class="grid__item width-2-12 width-4-12-m block">
-            <a href="https://openliberty.io/" target="_blank">
-                <img src="/assets/images/logoset_openliberty.png">
-                <span>Open Liberty</span>
-            </a>
-        </div>
-    </div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>@Retry.retryOn</code> and <code>abortOn</code> attributes no longer ignore <code>Throwable.class</code>, to be consistent with other annotations that also specify exceptions.
+Only <code>@Retry</code> had a requirement that <code>Throwable</code> is to be ignored.</p>
+</li>
+<li>
+<p>Related to the previous item is that the specification now admits that throwing custom <code>Throwable</code>s results in nonportable behavior.
+Fortunately, the use cases for throwing something that isn&#8217;t an <code>Exception</code> (nor an <code>Error</code>) should be very rare.</p>
+</li>
+<li>
+<p>Also, the behavior was previously unspecified when the <code>@Retry.retryOn</code> and <code>abortOn</code> attributes overlap.
+It is now specified that the <code>abortOn</code> attribute "wins" over <code>retryOn</code>.</p>
+</li>
+<li>
+<p>The <code>@CircuitBreaker.skipOn</code> attribute was added, to complement the existing <code>failOn</code> attribute.
+When the attributes overlap, <code>skipOn</code> "wins" over <code>failOn</code>.</p>
+</li>
+<li>
+<p>The <code>@Fallback.applyOn</code> and <code>skipOn</code> attributes were also added.
+When they overlap, <code>skipOn</code> "wins" over <code>applyOn</code>.</p>
+</li>
+<li>
+<p>It is now specified that during the <code>@Asynchronous</code> method execution, the CDI request context is always active.
+The specification previously did not require that.</p>
+</li>
+</ul>
 </div>
-    <div class="full-width-bg component feedback-community-band">
-  <div class="grid-wrapper">
-    <div class="grid__item width-6-12 width-12-12-m">
-      <h3>Feedback and Help</h3>
-      <p>You can contact the SmallRye project team using:</p>
-      <ul>
-        <li>Chat using <a href="https://gitter.im/smallrye-io/community" target="_blank">Gitter</a></li>
-        <li>Ask questions or discuss contributions in the <a href="https://groups.google.com/d/forum/smallrye" target="_blank">SmallRye Google Group</a></li>
-      </ul>
-      <p>Your help is more than welcome! Don’t hesitate to join us.</p>
-    </div>
-    <div class="grid__item width-6-12 width-12-12-m">
-      <h3>Join the SmallRye Community</h3>
-      <p>
-        Check out our <a href="https://github.com/smallrye" target="_blank">GitHub</a> for details on reporting issues and the process for submitting pull requests.<br /><br />
-        Every contribution is valuable. It can be a bug report, an example application, a feature request, a fix in the documentation or just feedback.
-      </p>
-    </div>
+<div class="paragraph">
+<p>This release is also aligned with other SmallRye projects (Config and Metrics) that also recently released a new version in preparation of MicroProfile 3.3 platform release.</p>
+</div>
+<div class="paragraph">
+<p>Enjoy the new SmallRye Fault Tolerance, it is <a href="https://github.com/quarkusio/quarkus/pull/7204">coming</a> in the next Quarkus release!</p>
+</div>
   </div>
-</div>
-
 </div>
 
   </div>
