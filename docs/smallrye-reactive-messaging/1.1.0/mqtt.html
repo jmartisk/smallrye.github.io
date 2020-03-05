@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: SmallRye documentation</title>
+    <meta name="generator" content="Antora 2.2.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">SmallRye documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://smallrye.io/" alt=>SmallRye.io main website</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="smallrye-reactive-messaging" data-version="1.1.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Reactive Messaging</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intro.html">Intro</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts.html">Concepts</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sources.html">Generating data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sinks.html">Consuming data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="processor.html">Processing data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acknowledgment.html">Acknowledgement</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="transports.html">Connecting transports</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="kafka.html">Receiving and Sending messages with Apache Kafka</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amqp.html">Receiving and Sending AMQP 1.0 Messages</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="camel.html">Integrating with Apache Camel</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="mqtt.html">Interacting using MQTT</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="http.html">Emitting HTTP requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="vertx-eventbus.html">Interacting with the Vert.x Eventbus</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="jms.html">Receiving and Sending messages using JMS (Java Message Service)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing without the infrastructure</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="advanced.html">Advanced and Experimental features</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Reactive Messaging</span>
+    <span class="version">1.1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Reactive Messaging</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">1.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">SmallRye Metrics</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../smallrye-metrics/2.4.0/index.html">2.4.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main>
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../smallrye-metrics/2.4.0/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Reactive Messaging</a></li>
+    <li><a href="mqtt.html">Interacting using MQTT</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/mqtt.adoc">Edit this Page</a></div>
+  </div>
+<article class="doc">
+<div class="sect1">
+<h2 id="_interacting_using_mqtt"><a class="anchor" href="#_interacting_using_mqtt"></a>Interacting using MQTT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You have two options here:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>you can connect to an MQTT broker or server as a source or sink. The MQTT support is based on
+the <a href="https://vertx.io/docs/vertx-mqtt/java/#_vert_x_mqtt_client">Vert.x MQTT Client</a>.</p>
+</li>
+<li>
+<p>you can receive MQTT messages as an MQTT server. The MQTT support is based on the
+<a href="https://vertx.io/docs/vertx-mqtt/java/#_vert_x_mqtt_server">Vert.x MQTT Server</a></p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_mqtt_client_incoming_or_outgoing"><a class="anchor" href="#_mqtt_client_incoming_or_outgoing"></a>MQTT client (incoming or outgoing)</h3>
+<div class="paragraph">
+<p>For if you want to produce or consumer MQTT messages coming or going to an MQTT broker
+or server.</p>
+</div>
+<div class="sect3">
+<h4 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h4>
+<div class="paragraph">
+<p>To enable the MQTT client support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-mqtt&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_retrieving_messages_from_an_mqtt_broker_or_server"><a class="anchor" href="#_retrieving_messages_from_an_mqtt_broker_or_server"></a>Retrieving messages from an MQTT broker or server</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.incoming.data.topic=data
+mp.messaging.incoming.data.connector=smallrye-mqtt
+mp.messaging.incoming.data.host=localhost
+mp.messaging.incoming.data.port=8883
+mp.messaging.incoming.data.username=username
+mp.messaging.incoming.data.password=secret
+mp.messaging.incoming.data.broadcast=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Message coming from MQTT are <code>Message&lt;byte[]&gt;</code>. The payload is a <code>byte[]</code>. You can also receive
+<code>io.smallrye.reactive.messaging.mqtt.MqttMessage</code> which give you access to message metadata.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>topic</code> attribute is not set the channel name is used instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_forwarding_messages_to_an_mqtt_broker_or_server"><a class="anchor" href="#_forwarding_messages_to_an_mqtt_broker_or_server"></a>Forwarding messages to an MQTT broker or server</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.topic=data
+mp.messaging.outgoing.data.connector=smallrye-mqtt
+mp.messaging.outgoing.data.host=localhost
+mp.messaging.outgoing.data.port=8883
+mp.messaging.outgoing.data.username=username
+mp.messaging.outgoing.data.password=secret</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The payload of message forwarded to an MQTT broker or server must be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a <code>io.vertx.core.json.JsonObject</code> or a <code>io.vertx.core.json.JsonArray</code></p>
+</li>
+<li>
+<p>a <code>String</code> or a primitive types</p>
+</li>
+<li>
+<p>a <code>byte[]</code> or a Vert.x Buffer</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other objects are mapped to JSON.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>topic</code> attribute is not set the channel name is used instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_advanced_configuration"><a class="anchor" href="#_advanced_configuration"></a>Advanced configuration</h4>
+<div class="paragraph">
+<p>Check <code>io.smallrye.reactive.messaging.mqtt.MqttSource.MqttSource</code> and
+<code>io.smallrye.reactive.messaging.mqtt.MqttSource.MqttSink</code> for further details on the attributes.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mqtt_server"><a class="anchor" href="#_mqtt_server"></a>MQTT server</h3>
+<div class="paragraph">
+<p>For if you want your code to act as an MQTT server to receive MQTT messages from one or more
+clients.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This isn&#8217;t a fully featured MQTT server, it will only handle publish requests and their
+acknowledgment (for QoS 1 &amp; 2). It will ignore subscription requests for instance.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The server has no persistence, if no subscribers are listening, messages will be dropped.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_dependency_2"><a class="anchor" href="#_dependency_2"></a>Dependency</h4>
+<div class="paragraph">
+<p>To enable the MQTT server support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-mqtt-server&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_receive_mqtt_messages_from_one_or_more_mqtt_client"><a class="anchor" href="#_receive_mqtt_messages_from_one_or_more_mqtt_client"></a>Receive MQTT messages from one or more MQTT client</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code># [Source - messages] - Receive MQTT messages
+# Required
+mp.messaging.incoming.messages.connector=smallrye-mqtt-server
+
+#mp.messaging.incoming.messages.host=0.0.0.0
+#mp.messaging.incoming.messages.port=1883
+# If clientid should be auto-generated when it's "zero-bytes"
+#mp.messaging.incoming.messages.auto-client-id=true
+# Max MQTT message size (variable header + payload)
+#mp.messaging.incoming.messages.max-message-size=-1
+# The timeout on CONNECT packet
+#mp.messaging.incoming.messages.timeout-on-connect=90
+# The TCP receive buffer size
+#mp.messaging.incoming.messages.receive-buffer-size=-1
+# [/Source - messages]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Message coming from MQTT are <code>Message&lt;byte[]&gt;</code>. The payload is a <code>byte[]</code>. You can also receive
+<code>io.smallrye.reactive.messaging.mqtt.server.MqttMessage</code> which give you access to message metadata.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

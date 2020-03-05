@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: SmallRye documentation</title>
+    <meta name="generator" content="Antora 2.2.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">SmallRye documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://smallrye.io/" alt=>SmallRye.io main website</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="smallrye-reactive-messaging" data-version="1.1.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Reactive Messaging</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intro.html">Intro</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts.html">Concepts</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sources.html">Generating data</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="sinks.html">Consuming data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="processor.html">Processing data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acknowledgment.html">Acknowledgement</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="transports.html">Connecting transports</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="kafka.html">Receiving and Sending messages with Apache Kafka</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amqp.html">Receiving and Sending AMQP 1.0 Messages</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="camel.html">Integrating with Apache Camel</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mqtt.html">Interacting using MQTT</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="http.html">Emitting HTTP requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="vertx-eventbus.html">Interacting with the Vert.x Eventbus</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="jms.html">Receiving and Sending messages using JMS (Java Message Service)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing without the infrastructure</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="advanced.html">Advanced and Experimental features</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Reactive Messaging</span>
+    <span class="version">1.1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Reactive Messaging</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">1.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">SmallRye Metrics</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../smallrye-metrics/2.4.0/index.html">2.4.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main>
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../smallrye-metrics/2.4.0/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Reactive Messaging</a></li>
+    <li><a href="sinks.html">Consuming data</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/sinks.adoc">Edit this Page</a></div>
+  </div>
+<article class="doc">
+<div class="sect1">
+<h2 id="_consuming_data"><a class="anchor" href="#_consuming_data"></a>Consuming data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To consume data (act as a data sink), you just need a method only annotated with <code>@Incoming</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_supported_signatures"><a class="anchor" href="#_supported_signatures"></a>Supported Signatures</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Incoming Subscriber&lt;Message&lt;I&gt;&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Incoming Subscriber&lt;I&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Incoming void method(I msg)</code></p>
+</li>
+<li>
+<p><code>@Incoming CompletionStage&lt;?&gt; method(Message&lt;I&gt; msg)</code></p>
+</li>
+<li>
+<p><code>@Incoming CompletionStage&lt;?&gt; method(I msg)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The two first methods return a Reactive Streams <code>Subscriber</code>. The other methods consume the incoming items one by one.
+Notice that, when returning a <code>CompletionStage</code>, the method won&#8217;t be called until the previously returned
+<code>CompletionStage</code> is completed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h3>
+<div class="paragraph">
+<p>The following code snippet provides example of the different variants of signature.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package io.smallrye.reactive.messaging.snippets;
+
+
+import org.eclipse.microprofile.reactive.messaging.Incoming;
+import org.eclipse.microprofile.reactive.messaging.Message;
+import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
+import org.reactivestreams.Subscriber;
+
+import javax.enterprise.context.ApplicationScoped;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+
+@ApplicationScoped
+public class ConsumptionExamples {
+
+  @Incoming("data")
+  public Subscriber&lt;String&gt; consume() {
+    return ReactiveStreams.&lt;String&gt;builder()
+      .map(String::toUpperCase)
+      .findFirst()
+      .build();
+  }
+
+  @Incoming("data")
+  public Subscriber&lt;Message&lt;String&gt;&gt; consumeMessages() {
+    return ReactiveStreams.&lt;Message&lt;String&gt;&gt;builder()
+      .findFirst()
+      .build();
+  }
+
+  @Incoming("data")
+  public void consumeOne(String input) {
+    //...
+  }
+
+  @Incoming("data")
+  public CompletionStage&lt;Void&gt; consumeAsync(String input) {
+    return CompletableFuture.runAsync(() -&gt; {
+      // ...
+    });
+  }
+
+  @Incoming("data")
+  public CompletionStage&lt;Void&gt; consumeMessageAsync(Message&lt;String&gt; input) {
+    return CompletableFuture.runAsync(() -&gt; {
+      // ...
+    });
+  }
+
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

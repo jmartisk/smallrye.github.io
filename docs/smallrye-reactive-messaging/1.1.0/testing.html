@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: SmallRye documentation</title>
+    <meta name="generator" content="Antora 2.2.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">SmallRye documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://smallrye.io/" alt=>SmallRye.io main website</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="smallrye-reactive-messaging" data-version="1.1.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Reactive Messaging</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intro.html">Intro</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts.html">Concepts</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sources.html">Generating data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sinks.html">Consuming data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="processor.html">Processing data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acknowledgment.html">Acknowledgement</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="transports.html">Connecting transports</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="kafka.html">Receiving and Sending messages with Apache Kafka</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amqp.html">Receiving and Sending AMQP 1.0 Messages</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="camel.html">Integrating with Apache Camel</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mqtt.html">Interacting using MQTT</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="http.html">Emitting HTTP requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="vertx-eventbus.html">Interacting with the Vert.x Eventbus</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="jms.html">Receiving and Sending messages using JMS (Java Message Service)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing without the infrastructure</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="advanced.html">Advanced and Experimental features</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Reactive Messaging</span>
+    <span class="version">1.1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Reactive Messaging</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">1.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">SmallRye Metrics</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../smallrye-metrics/2.4.0/index.html">2.4.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main>
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../smallrye-metrics/2.4.0/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Reactive Messaging</a></li>
+    <li><a href="testing.html">Testing without the infrastructure</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/testing.adoc">Edit this Page</a></div>
+  </div>
+<article class="doc">
+<div class="sect1">
+<h2 id="_testing_without_the_infrastructure"><a class="anchor" href="#_testing_without_the_infrastructure"></a>Testing without the infrastructure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It&#8217;s not rare to have to test your application but deploying the infrastructure can be cumbersome.
+While Docker or Test Containers have improved the the testing experience, you may want to <em>mock</em> this infrastructure.</p>
+</div>
+<div class="paragraph">
+<p>SmallRye Reactive Messaging proposes an <em>in-memory</em> connector for this exact purpose.
+It allows switching the connector used for a channel with an <em>in-memory</em> connector.
+This connector can then provide a way to send messages for incoming channels, or check the received messages for outgoing
+channels.</p>
+</div>
+<div class="paragraph">
+<p>To use the <em>in-memory</em> connector, you need to add the following dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-in-memory&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, in a test, you can do something like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// ...
+import io.smallrye.reactive.messaging.connectors.InMemoryConnector;
+import io.smallrye.reactive.messaging.connectors.InMemorySource;
+import io.smallrye.reactive.messaging.connectors.InMemorySink;
+// ...
+
+@Test
+class MyTest {
+
+    // 1. Switch the channels to the in-memory connector:
+    @BeforeAll
+    public static void switchMyChannels() {
+        InMemoryConnector.switchChannelToInMemory("prices", "processed-prices");
+    }
+
+    // 2. Don't forget to reset the channel after the tests:
+    @AfterAll
+    public static void revertMyChannels() {
+        InMemoryConnector.clear();
+    }
+
+    // 3. Inject the in-memory connector in your test,
+    // or use the bean manager to retrieve the instance
+    @Inject @Any
+    InMemoryConnector connector;
+
+    @Test
+    void test() {
+      // 4. Retrieves the in-memory source to send message
+      InMemorySource&lt;Integer&gt; prices = connector.source("prices");
+      // 5. Retrieves the in-memory sink to check what is received
+      InMemorySink&lt;Integer&gt; results = connector.sink("processed-prices");
+
+      // 6. Send fake messages:
+      prices.send(1);
+      prices.send(2);
+      prices.send(3);
+
+      // 7. Check you have receives the expected messages
+      assertThat(results.received()).hasSize(3)
+        .extracting(Message::getPayload).containsExactly(2, 3, 4);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This connector has been designed for testing purpose only.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

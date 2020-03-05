@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: SmallRye documentation</title>
+    <meta name="generator" content="Antora 2.2.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">SmallRye documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://smallrye.io/" alt=>SmallRye.io main website</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="smallrye-reactive-messaging" data-version="1.1.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Reactive Messaging</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intro.html">Intro</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts.html">Concepts</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sources.html">Generating data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sinks.html">Consuming data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="processor.html">Processing data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acknowledgment.html">Acknowledgement</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="transports.html">Connecting transports</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="kafka.html">Receiving and Sending messages with Apache Kafka</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amqp.html">Receiving and Sending AMQP 1.0 Messages</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="camel.html">Integrating with Apache Camel</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mqtt.html">Interacting using MQTT</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="http.html">Emitting HTTP requests</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="vertx-eventbus.html">Interacting with the Vert.x Eventbus</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="jms.html">Receiving and Sending messages using JMS (Java Message Service)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing without the infrastructure</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="advanced.html">Advanced and Experimental features</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Reactive Messaging</span>
+    <span class="version">1.1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Reactive Messaging</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">1.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">SmallRye Metrics</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../smallrye-metrics/2.4.0/index.html">2.4.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main>
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../smallrye-metrics/2.4.0/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Reactive Messaging</a></li>
+    <li><a href="vertx-eventbus.html">Interacting with the Vert.x Eventbus</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/vertx-eventbus.adoc">Edit this Page</a></div>
+  </div>
+<article class="doc">
+<div class="sect1">
+<h2 id="_interacting_with_the_vert_x_eventbus"><a class="anchor" href="#_interacting_with_the_vert_x_eventbus"></a>Interacting with the Vert.x Eventbus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Vert.x Eventbus is the backbone of Vert.x applications. It allows different application components to interact in
+an asynchronous way.</p>
+</div>
+<div class="sect2">
+<h3 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h3>
+<div class="paragraph">
+<p>To enable the Vert.x EventBus support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-vertx-eventbus&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_retrieving_messages_from_the_event_bus"><a class="anchor" href="#_retrieving_messages_from_the_event_bus"></a>Retrieving messages from the event bus</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.incoming.data.address=&lt;the-eventbus-address&gt;
+mp.messaging.incoming.data.connector=smallrye-vertx-eventbus
+mp.messaging.incoming.data.use-reply-as-ack=&lt;true|false&gt;
+mp.messaging.incoming.data.broadcast=&lt;true|false&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>address</code> indicates from which event bus address the messages are retrieved. <code>use-reply-as-ack</code> instructs the
+framework to reply to the event bus message as acknowledgement mechanism. Finally, the <code>broadcast</code> entry broadcasts the
+to many subscribers.</p>
+</div>
+<div class="paragraph">
+<p>The received messages are instance of <code>io.smallrye.reactive.messaging.eventbus.EventBusMessage</code>. The payload is the message
+body. From the <code>EventBusMessage</code>, you can retrieve the headers, address&#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sending_messages_to_the_event_bus"><a class="anchor" href="#_sending_messages_to_the_event_bus"></a>Sending messages to the event bus</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.address=&lt;the-eventbus-address&gt;
+mp.messaging.outgoing.data.connector=smallrye-vertx-eventbus
+mp.messaging.outgoing.data.publish=&lt;true|false&gt;
+mp.messaging.outgoing.data.expect-reply=&lt;true|false&gt;
+mp.messaging.outgoing.data.codec=&lt;codec-name&gt;
+mp.messaging.outgoing.data.timeout=1000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>address</code> indicates where the messages are sent. <code>publish</code> choose whether the message is sent to a single consumer (
+<code>false</code>) or broadcast (<code>true</code>). <code>expect-reply</code> indicates if you expect a reply. No other messages will be sent until the
+reply is received. <code>codec</code> is the name of the codec (it must have been registered explicitly). Finally, the <code>timeout</code>
+specifies the reply timeout.</p>
+</div>
+<div class="paragraph">
+<p>The event bus message is created from the Reactive Messaging message. The payload is passed as body.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

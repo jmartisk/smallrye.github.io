@@ -1,0 +1,3128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SmallRye Reactive Messaging :: SmallRye documentation</title>
+    <meta name="generator" content="Antora 2.2.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">SmallRye documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://smallrye.io/" alt=>SmallRye.io main website</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="smallrye-reactive-messaging" data-version="1.1.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Reactive Messaging</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intro.html">Intro</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts.html">Concepts</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sources.html">Generating data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sinks.html">Consuming data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="processor.html">Processing data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acknowledgment.html">Acknowledgement</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="transports.html">Connecting transports</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="kafka.html">Receiving and Sending messages with Apache Kafka</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amqp.html">Receiving and Sending AMQP 1.0 Messages</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="camel.html">Integrating with Apache Camel</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mqtt.html">Interacting using MQTT</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="http.html">Emitting HTTP requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="vertx-eventbus.html">Interacting with the Vert.x Eventbus</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="jms.html">Receiving and Sending messages using JMS (Java Message Service)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing without the infrastructure</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="advanced.html">Advanced and Experimental features</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Reactive Messaging</span>
+    <span class="version">1.1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Reactive Messaging</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">1.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">SmallRye Metrics</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../smallrye-metrics/2.4.0/index.html">2.4.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main>
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../smallrye-metrics/2.4.0/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Reactive Messaging</a></li>
+    <li><a href="index.html">SmallRye Reactive Messaging</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  </div>
+<article class="doc">
+<h1 class="page">SmallRye Reactive Messaging</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title">SmallRye Reactive Messaging</div>
+<ul class="sectlevel2">
+<li><a href="#_getting_started">1. Getting Started</a>
+<ul class="sectlevel3">
+<li><a href="#_quickstart">1.1. Quickstart</a></li>
+</ul>
+</li>
+<li><a href="#_concepts">2. Concepts</a>
+<ul class="sectlevel3">
+<li><a href="#_messages">2.1. Messages</a></li>
+<li><a href="#_incoming">2.2. Incoming</a></li>
+<li><a href="#_outgoing">2.3. Outgoing</a></li>
+<li><a href="#_methods_with_outgoing_and_incoming">2.4. Methods with @Outgoing and @Incoming</a></li>
+<li><a href="#_binding_matching_outgoing_to_incoming">2.5. Binding matching @Outgoing to @Incoming</a></li>
+<li><a href="#_metadata_and_propagation">2.6. Metadata and Propagation</a></li>
+</ul>
+</li>
+<li><a href="#_generating_data">3. Generating data</a>
+<ul class="sectlevel3">
+<li><a href="#_supported_signatures">3.1. Supported Signatures</a></li>
+<li><a href="#_examples">3.2. Examples</a></li>
+</ul>
+</li>
+<li><a href="#_consuming_data">4. Consuming data</a>
+<ul class="sectlevel3">
+<li><a href="#_supported_signatures_2">4.1. Supported Signatures</a></li>
+<li><a href="#_examples_2">4.2. Examples</a></li>
+</ul>
+</li>
+<li><a href="#_processing_data">5. Processing data</a>
+<ul class="sectlevel3">
+<li><a href="#_manipulating_items_one_by_one">5.1. Manipulating items one by one</a></li>
+<li><a href="#_consuming_one_items_and_producing_a_streams">5.2. Consuming one items and producing a streams</a></li>
+<li><a href="#_creating_a_reactive_stream_processor">5.3. Creating a Reactive Stream Processor</a></li>
+<li><a href="#_manipulating_streams">5.4. Manipulating streams</a></li>
+<li><a href="#_reactive_streams_reactive_stream_operators_rx_java">5.5. Reactive Streams, Reactive Stream Operators, RX Java</a></li>
+</ul>
+</li>
+<li><a href="#_acknowledgement">6. Acknowledgement</a></li>
+<li><a href="#_connecting_transports">7. Connecting transports</a></li>
+<li><a href="#_receiving_and_sending_messages_with_apache_kafka">8. Receiving and Sending messages with Apache Kafka</a>
+<ul class="sectlevel3">
+<li><a href="#_dependency">8.1. Dependency</a></li>
+<li><a href="#_retrieving_messages_from_kafka">8.2. Retrieving messages from Kafka</a></li>
+<li><a href="#_writing_messages_in_kafka">8.3. Writing messages in Kafka</a></li>
+</ul>
+</li>
+<li><a href="#_receiving_and_sending_amqp_1_0_messages">9. Receiving and Sending AMQP 1.0 Messages</a>
+<ul class="sectlevel3">
+<li><a href="#_dependency_2">9.1. Dependency</a></li>
+<li><a href="#_receiving_messages_from_amqp">9.2. Receiving messages from AMQP</a></li>
+<li><a href="#_sending_messages_to_amqp">9.3. Sending messages to AMQP</a></li>
+<li><a href="#_global_configuration">9.4. Global configuration</a></li>
+</ul>
+</li>
+<li><a href="#_integrating_with_apache_camel">10. Integrating with Apache Camel</a>
+<ul class="sectlevel3">
+<li><a href="#_dependency_3">10.1. Dependency</a></li>
+<li><a href="#_camel_reactive">10.2. Camel Reactive</a></li>
+<li><a href="#_using_camel_route_in_outgoing_method">10.3. Using Camel Route in @Outgoing method</a></li>
+<li><a href="#_using_camel_route_in_incoming_method">10.4. Using Camel Route in @Incoming method</a></li>
+<li><a href="#_retrieving_messages_from_a_camel_route">10.5. Retrieving messages from a Camel Route</a></li>
+<li><a href="#_forwarding_messages_to_a_camel_route">10.6. Forwarding messages to a Camel Route</a></li>
+</ul>
+</li>
+<li><a href="#_interacting_using_mqtt">11. Interacting using MQTT</a>
+<ul class="sectlevel3">
+<li><a href="#_mqtt_client_incoming_or_outgoing">11.1. MQTT client (incoming or outgoing)</a>
+<ul class="sectlevel4">
+<li><a href="#_dependency_4">Dependency</a></li>
+<li><a href="#_retrieving_messages_from_an_mqtt_broker_or_server">Retrieving messages from an MQTT broker or server</a></li>
+<li><a href="#_forwarding_messages_to_an_mqtt_broker_or_server">Forwarding messages to an MQTT broker or server</a></li>
+<li><a href="#_advanced_configuration">Advanced configuration</a></li>
+</ul>
+</li>
+<li><a href="#_mqtt_server">11.2. MQTT server</a>
+<ul class="sectlevel4">
+<li><a href="#_dependency_5">Dependency</a></li>
+<li><a href="#_receive_mqtt_messages_from_one_or_more_mqtt_client">Receive MQTT messages from one or more MQTT client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_emitting_http_requests">12. Emitting HTTP requests</a>
+<ul class="sectlevel3">
+<li><a href="#_dependency_6">12.1. Dependency</a></li>
+<li><a href="#_forwarding_messages_to_http">12.2. Forwarding messages to HTTP</a></li>
+<li><a href="#_customizing_the_http_request">12.3. Customizing the HTTP request</a></li>
+<li><a href="#_supported_payload">12.4. Supported payload</a></li>
+</ul>
+</li>
+<li><a href="#_interacting_with_the_vert_x_eventbus">13. Interacting with the Vert.x Eventbus</a>
+<ul class="sectlevel3">
+<li><a href="#_dependency_7">13.1. Dependency</a></li>
+<li><a href="#_retrieving_messages_from_the_event_bus">13.2. Retrieving messages from the event bus</a></li>
+<li><a href="#_sending_messages_to_the_event_bus">13.3. Sending messages to the event bus</a></li>
+</ul>
+</li>
+<li><a href="#_receiving_and_sending_messages_using_jms_java_message_service">14. Receiving and Sending messages using JMS (Java Message Service)</a>
+<ul class="sectlevel3">
+<li><a href="#_dependency_8">14.1. Dependency</a></li>
+<li><a href="#_connection_factory_requirement">14.2. Connection Factory Requirement</a>
+<ul class="sectlevel4">
+<li><a href="#_selecting_connectionfactory">Selecting ConnectionFactory</a></li>
+<li><a href="#_configure_credentials">Configure credentials</a></li>
+<li><a href="#_session_mode">Session mode</a></li>
+<li><a href="#_configure_the_client_id">Configure the client id</a></li>
+</ul>
+</li>
+<li><a href="#_json_b_requirement">14.3. JSON-B Requirement</a></li>
+<li><a href="#_sending_jms_messages">14.4. Sending JMS messages</a>
+<ul class="sectlevel4">
+<li><a href="#_sending_string_and_primitives">Sending String and primitives</a></li>
+<li><a href="#_sending_objects">Sending objects</a></li>
+<li><a href="#_sending_byte_arrays">Sending byte arrays</a></li>
+<li><a href="#_sending_jms_message">Sending JMS Message</a></li>
+<li><a href="#_connector_configuration">Connector configuration</a></li>
+<li><a href="#_outgoing_jms_message_metadata">Outgoing JMS message metadata</a></li>
+</ul>
+</li>
+<li><a href="#_receiving_jms_messages">14.5. Receiving JMS messages</a>
+<ul class="sectlevel4">
+<li><a href="#_receiving_message">Receiving Message</a></li>
+<li><a href="#_receiving_payload">Receiving payload</a></li>
+<li><a href="#_connector_configuration_2">Connector configuration</a></li>
+<li><a href="#_incoming_message_metadata">Incoming message metadata</a></li>
+</ul>
+</li>
+<li><a href="#_advanced_configuration_2">14.6. Advanced configuration</a></li>
+</ul>
+</li>
+<li><a href="#_testing_without_the_infrastructure">15. Testing without the infrastructure</a></li>
+<li><a href="#_advanced_and_experimental_features">16. Advanced and Experimental features</a>
+<ul class="sectlevel3">
+<li><a href="#_merge">16.1. @Merge</a></li>
+<li><a href="#_broadcast">16.2. @Broadcast</a></li>
+<li><a href="#_channel">16.3. @Channel</a></li>
+<li><a href="#_logging">16.4. Logging</a></li>
+<li><a href="#_strict_binding_mode">16.5. Strict Binding Mode</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>SmallRye Reactive Messaging is an implementation of the (next to be) Eclipse MicroProfile Reactive Messaging specification.
+It provides a way to implement reactive data streaming application using a CDI development model.</p>
+</div>
+<div class="paragraph">
+<p>It provides:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a development model to build data streaming applications</p>
+</li>
+<li>
+<p>connections for Apache Kafka, AMQP 1.0, MQTT, Apache Camel&#8230;&#8203;</p>
+</li>
+<li>
+<p>a way to inject manipulated streams into regular CDI beans and JAX-RS resources</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>SmallRye Reactive Messaging enables data streaming application, event-driven and asynchronous microservices, event
+sourcing applications&#8230;&#8203;</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/overview.png" alt="overview">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_started"><a class="anchor" href="#_getting_started"></a>1. Getting Started</h3>
+<div class="sect3">
+<h4 id="_quickstart"><a class="anchor" href="#_quickstart"></a>1.1. Quickstart</h4>
+<div class="paragraph">
+<p>The easiest to start using SmallRye Reactive Messaging is to start it directly in a <em>main</em> class.</p>
+</div>
+<div class="paragraph">
+<p>Creates a Maven project, and include the following dependency in your pom.xml:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-provider&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-streams-operators&lt;/artifactId&gt;
+  &lt;version&gt;{smallrye-streams-version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;
+  &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;
+  &lt;version&gt;{weld-version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once created, create a class file with a <code>public static void main(String&#8230;&#8203; args)</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package io.smallrye.reactive.messaging.quickstart;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.se.SeContainerInitializer;
+
+@ApplicationScoped
+public class Main {
+
+  public static void main(String[] args) {
+    SeContainerInitializer.newInstance().initialize();
+  }
+
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, we need CDI <em>beans</em>. For instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package io.smallrye.reactive.messaging.quickstart;
+
+import org.eclipse.microprofile.reactive.messaging.Incoming;
+import org.eclipse.microprofile.reactive.messaging.Outgoing;
+import org.eclipse.microprofile.reactive.streams.operators.PublisherBuilder;
+import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
+
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
+public class MyBean {
+
+  @Outgoing("source")
+  public PublisherBuilder&lt;String&gt; source() {
+    return ReactiveStreams.of("hello", "with", "SmallRye", "reactive", "message");
+  }
+
+  @Incoming("source")
+  @Outgoing("processed-a")
+  public String toUpperCase(String payload) {
+    return payload.toUpperCase();
+  }
+
+  @Incoming("processed-a")
+  @Outgoing("processed-b")
+  public PublisherBuilder&lt;String&gt; filter(PublisherBuilder&lt;String&gt; input) {
+    return input.filter(item -&gt; item.length() &gt; 4);
+  }
+
+  @Incoming("processed-b")
+  public void sink(String word) {
+    System.out.println("&gt;&gt; " + word);
+  }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, you need an <em>empty</em> <code>beans.xml</code>. Copy the following content to <code>src/main/resources/META-INF/beans.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;beans
+  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+      http://xmlns.jcp.org/xml/ns/javaee
+      http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"&gt;
+
+&lt;/beans&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once everything is setup, you should be able to run the application using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn compile exec:java -Dexec.mainClass=&lt;Main fully qualified class name&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Running the previous example should give the following output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>&gt;&gt; HELLO
+&gt;&gt; SMALLRYE
+&gt;&gt; REACTIVE
+&gt;&gt; MESSAGE</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Smallrye Reactive Messaging uses SLF4J as logger.
+Check the <a href="https://www.slf4j.org/manual.html">SLF4J documentation</a> to configure the logs.
+For testing purpose, you can simply add the following dependency to your <code>pom.xml</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+  &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
+  &lt;version&gt;1.7.30&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_concepts"><a class="anchor" href="#_concepts"></a>2. Concepts</h3>
+<div class="paragraph">
+<p>MicroProfile Reactive Messaging proposes a model to build data streaming application using a CDI development model. It
+is based on 3 main concepts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Message</code></p>
+</li>
+<li>
+<p><code>@Incoming</code></p>
+</li>
+<li>
+<p><code>@Outgoing</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Behind the scene, SmallRye Reactive Streams composes <em>Reactive Streams</em> and ensures the consistent flow of messages.</p>
+</div>
+<div class="sect3">
+<h4 id="_messages"><a class="anchor" href="#_messages"></a>2.1. Messages</h4>
+<div class="paragraph">
+<p>A <code>Message</code> (defined by <code>org.eclipse.microprofile.reactive.messaging.Message</code>) is an envelope around a payload. The
+<code>Message</code> interface just offers a way to retrieve the payload (<code>getPayload</code>), a set of <em>metadata</em> and a method to acknowledge the message (<code>ack</code>).</p>
+</div>
+<div class="paragraph">
+<p>The <code>Message</code> interface is parameterized with the type of the payload. For example, <code>Message&lt;String&gt;</code> describes a
+message containing a <code>String</code> payload.</p>
+</div>
+<div class="paragraph">
+<p>A <code>Message</code> can contain metadata. These metadata can be used to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>retrieve details about the message, like for example the Kafka topic, Kafka key, HTTP headers&#8230;&#8203;;</p>
+</li>
+<li>
+<p>add data propagated with the message that may influence the outbound dispatching, for example indicate to which Kafka topic the message should be written to.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Acknowledgement is covered below, in a dedicated section.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_incoming"><a class="anchor" href="#_incoming"></a>2.2. Incoming</h4>
+<div class="paragraph">
+<p><code>Incoming</code> is an annotation indicating that the method consumes a stream. The name of the stream is given as attribute
+such as in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("my-stream")
+public void consume(Message&lt;String&gt; s) {
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A method only annotated with <code>@Incoming</code> forms the end of a processing chain, often called <em>sink</em>:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/incoming.png" alt="incoming">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_outgoing"><a class="anchor" href="#_outgoing"></a>2.3. Outgoing</h4>
+<div class="paragraph">
+<p><code>Outgoing</code> is an annotation indicating that the method feeds a stream. The name of the stream is given as attribute:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Outgoing("my-stream")
+public Message&lt;String&gt; produce() {
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A method only annotated with <code>@Outgoing</code> is a sort of data <em>source</em>:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/outgoing.png" alt="outgoing">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_methods_with_outgoing_and_incoming"><a class="anchor" href="#_methods_with_outgoing_and_incoming"></a>2.4. Methods with @Outgoing and @Incoming</h4>
+<div class="paragraph">
+<p>Of course, methods can also use both annotations to transform the incoming messages:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("from")
+@Outgoing("to")
+public String toUpperCase(String input) {
+  return input.toUpperCase();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A method annotated with both annotation is generally called <em>processor</em> or <em>mediator</em>:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/processor.png" alt="processor">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_binding_matching_outgoing_to_incoming"><a class="anchor" href="#_binding_matching_outgoing_to_incoming"></a>2.5. Binding matching @Outgoing to @Incoming</h4>
+<div class="paragraph">
+<p>SmallRye Reactive Messaging automatically binds matching <code>@Outgoing</code> to <code>@Incoming</code> to form a chain:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/chain.png" alt="chain">
+</div>
+</div>
+<div class="paragraph">
+<p>Methods annotated with <code>@Incoming</code> or <code>@Outgoing</code> don&#8217;t have to be in the same <em>bean</em> (<em>class</em>). You can distribute them
+amount a set of beans. Remote interactions are possible using a <em>transport</em> layer. This topic is covered in another
+section.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_metadata_and_propagation"><a class="anchor" href="#_metadata_and_propagation"></a>2.6. Metadata and Propagation</h4>
+<div class="paragraph">
+<p>Each message has a set of metadata (potentially empty).
+These metadata are retrieved with <code>org.eclipse.microprofile.reactive.messaging.Message.getMetadata</code>.
+The metadata set is an instance of <code>org.eclipse.microprofile.reactive.messaging.Metadata</code> which can be seen as an immutable <code>Map&lt;String, Object&gt;</code>.
+Neither the key or value can be <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p>To add metadata to a message, you can either use:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Message.of(payload, metadata, ack)</code> or <code>Message.of(payload, metadata)</code></p>
+</li>
+<li>
+<p>Use an existing <code>Message</code> and call <code>withMetadata(metadata)</code>. This method copies the payload and ack into another instance of <code>Message</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To create a set of <code>Metadata</code> use <code>Metadata.of(&#8230;&#8203;)</code>.
+Metadata are composed by objects (identified by their class) and can be retrieved using <code>Message.getMetadata</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    public static class MyMetadata {
+        private final String message;
+
+        public MyMetadata(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
+
+    public void example() {
+        Message&lt;String&gt; message = Message.of("hello", Metadata.of(new MyMetadata("some message")));
+        Optional&lt;MyMetadata&gt; metadata = message.getMetadata(MyMetadata.class);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The metadata can be composed by multiple objects to represent various metadata.</p>
+</div>
+<div class="paragraph">
+<p>Metadata are propagated though the chain when your method receives a single <em>payloads</em>.
+In all the other cases (stream, receiving <code>Message</code> and not payload), you need to propagate the metadata yourself, for example, using <code>message.withMetadata(incoming.getMetadata())</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generating_data"><a class="anchor" href="#_generating_data"></a>3. Generating data</h3>
+<div class="paragraph">
+<p>To generate data (act as a data source), you need a method annotated with <code>@Outgoing</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_supported_signatures"><a class="anchor" href="#_supported_signatures"></a>3.1. Supported Signatures</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Outgoing Publisher&lt;Message&lt;O&gt;&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing Publisher&lt;O&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing PublisherBuilder&lt;Message&lt;O&gt;&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing PublisherBuilder&lt;O&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing Message&lt;O&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing O method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing CompletionStage&lt;Message&lt;O&gt;&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing CompletionStage&lt;O&gt; method()</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first four variants generates a stream. The other methods generate each item individually.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_examples"><a class="anchor" href="#_examples"></a>3.2. Examples</h4>
+<div class="paragraph">
+<p>The following code snippet provides example of the different variants of signature.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package io.smallrye.reactive.messaging.snippets;
+
+import org.eclipse.microprofile.reactive.messaging.Message;
+import org.eclipse.microprofile.reactive.messaging.Outgoing;
+import org.eclipse.microprofile.reactive.streams.operators.PublisherBuilder;
+import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
+
+import javax.enterprise.context.ApplicationScoped;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+
+@ApplicationScoped
+public class GenerateExamples {
+
+  /**
+   * Produces a simple stream. The produced payloads are automatically wrapped
+   * into Messages.
+   */
+  @Outgoing("data-1")
+  public PublisherBuilder&lt;String&gt; generate() {
+    return ReactiveStreams.of("a", "b", "c");
+  }
+
+  /**
+   * Produces a simple stream of Message.
+   */
+  @Outgoing("data-2")
+  public PublisherBuilder&lt;Message&lt;String&gt;&gt; generateMessages() {
+    return ReactiveStreams.of("a", "b", "c").map(Message::of);
+  }
+
+  private AtomicInteger counter = new AtomicInteger();
+
+  /**
+   * Generates a stream payload by payload.
+   */
+  @Outgoing("data-3")
+  public int count() {
+    return counter.incrementAndGet();
+  }
+
+  /**
+   * Generates a stream message by message.
+   */
+  @Outgoing("data-4")
+  public Message&lt;Integer&gt; countAsMessage() {
+    return Message.of(counter.incrementAndGet());
+  }
+
+  private Executor executor = Executors.newSingleThreadExecutor();
+
+  /**
+   * Generates a stream message by message. The next message is only generated
+   * when the value from the previous one is redeemed.
+   */
+  @Outgoing("data-5")
+  public CompletionStage&lt;Message&lt;Integer&gt;&gt; produceAsyncMessages() {
+    return CompletableFuture.supplyAsync(() -&gt; Message.of(counter.incrementAndGet()), executor);
+  }
+
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_consuming_data"><a class="anchor" href="#_consuming_data"></a>4. Consuming data</h3>
+<div class="paragraph">
+<p>To consume data (act as a data sink), you just need a method only annotated with <code>@Incoming</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_supported_signatures_2"><a class="anchor" href="#_supported_signatures_2"></a>4.1. Supported Signatures</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Incoming Subscriber&lt;Message&lt;I&gt;&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Incoming Subscriber&lt;I&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Incoming void method(I msg)</code></p>
+</li>
+<li>
+<p><code>@Incoming CompletionStage&lt;?&gt; method(Message&lt;I&gt; msg)</code></p>
+</li>
+<li>
+<p><code>@Incoming CompletionStage&lt;?&gt; method(I msg)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The two first methods return a Reactive Streams <code>Subscriber</code>. The other methods consume the incoming items one by one.
+Notice that, when returning a <code>CompletionStage</code>, the method won&#8217;t be called until the previously returned
+<code>CompletionStage</code> is completed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_examples_2"><a class="anchor" href="#_examples_2"></a>4.2. Examples</h4>
+<div class="paragraph">
+<p>The following code snippet provides example of the different variants of signature.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package io.smallrye.reactive.messaging.snippets;
+
+
+import org.eclipse.microprofile.reactive.messaging.Incoming;
+import org.eclipse.microprofile.reactive.messaging.Message;
+import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
+import org.reactivestreams.Subscriber;
+
+import javax.enterprise.context.ApplicationScoped;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+
+@ApplicationScoped
+public class ConsumptionExamples {
+
+  @Incoming("data")
+  public Subscriber&lt;String&gt; consume() {
+    return ReactiveStreams.&lt;String&gt;builder()
+      .map(String::toUpperCase)
+      .findFirst()
+      .build();
+  }
+
+  @Incoming("data")
+  public Subscriber&lt;Message&lt;String&gt;&gt; consumeMessages() {
+    return ReactiveStreams.&lt;Message&lt;String&gt;&gt;builder()
+      .findFirst()
+      .build();
+  }
+
+  @Incoming("data")
+  public void consumeOne(String input) {
+    //...
+  }
+
+  @Incoming("data")
+  public CompletionStage&lt;Void&gt; consumeAsync(String input) {
+    return CompletableFuture.runAsync(() -&gt; {
+      // ...
+    });
+  }
+
+  @Incoming("data")
+  public CompletionStage&lt;Void&gt; consumeMessageAsync(Message&lt;String&gt; input) {
+    return CompletableFuture.runAsync(() -&gt; {
+      // ...
+    });
+  }
+
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_processing_data"><a class="anchor" href="#_processing_data"></a>5. Processing data</h3>
+<div class="paragraph">
+<p>There are several ways to manipulate items transiting in a streams.</p>
+</div>
+<div class="sect3">
+<h4 id="_manipulating_items_one_by_one"><a class="anchor" href="#_manipulating_items_one_by_one"></a>5.1. Manipulating items one by one</h4>
+<div class="paragraph">
+<p>The first possibility is to implement a method with both <code>@Incoming</code> and <code>@Outgoing</code> and receiving the <code>Message</code> or
+payload one by one. For each input, an output is produced. This output can be generated asynchronously by returning a
+<code>CompletionStage</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following signatures are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Outgoing @Incoming Message&lt;O&gt; method(Message&lt;I&gt; msg)</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming O method(I payload)</code> - metadata are propagated automatically.</p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming CompletionStage&lt;Message&lt;O&gt;&gt; method(Message&lt;I&gt; msg)</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming CompletionStage&lt;O&gt; method(I payload)</code> - metadata are propagated automatically.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_consuming_one_items_and_producing_a_streams"><a class="anchor" href="#_consuming_one_items_and_producing_a_streams"></a>5.2. Consuming one items and producing a streams</h4>
+<div class="paragraph">
+<p>Another possibility is to consume the items one by one, but instead of producing a single result, produce a stream,
+potentially empty. The following method signatures are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Outgoing @Incoming Publisher&lt;Message&lt;O&gt;&gt; method(Message&lt;I&gt; msg)</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming Publisher&lt;O&gt; method(I payload)</code> - metadata are propagated automatically.</p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming PublisherBuilder&lt;Message&lt;O&gt;&gt; method(Message&lt;I&gt; msg)</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming PublisherBuilder&lt;O&gt; method(I payload)</code> - metadata are propagated automatically.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example, the following method duplicates the received messages:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Incoming("proc-a")
+  @Outgoing("proc-b")
+  public PublisherBuilder&lt;String&gt; duplicate(String input) {
+    return ReactiveStreams.of(input, input);
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As said above, you can potentially return an empty stream to "ignore" the outcome.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Incoming("proc-b")
+  @Outgoing("proc-c")
+  public PublisherBuilder&lt;String&gt; removeC(String input) {
+    return ReactiveStreams.of(input)
+      .filter(s -&gt; ! s.equalsIgnoreCase("c"))
+      .map(String::toUpperCase);
+  }</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The returned streams are concatenated and the emissions are not mixed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_a_reactive_stream_processor"><a class="anchor" href="#_creating_a_reactive_stream_processor"></a>5.3. Creating a Reactive Stream Processor</h4>
+<div class="paragraph">
+<p>A <em>Processor</em> is a Reactive Stream entity acting as a <em>subscriber</em> (so consume data) and <em>publisher</em> (so publish data).
+To describe your data transformation logic, you can create and return a <code>Processor</code> (or a <code>ProcessorBuilder</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Incoming("proc-c")
+  @Outgoing("proc-d")
+  public ProcessorBuilder&lt;String, String&gt; process() {
+    return ReactiveStreams.&lt;String&gt;builder()
+      .map(s -&gt; "-" + s + "-");
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following methods are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Outgoing @Incoming Processor&lt;Message&lt;I&gt;, Message&lt;O&gt;&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming Processor&lt;I, O&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming ProcessorBuilder&lt;Message&lt;I&gt;, Message&lt;O&gt;&gt; method()</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming ProcessorBuilder&lt;I, O&gt; method()</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The returned streams are concatenated and the emissions are not mixed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_manipulating_streams"><a class="anchor" href="#_manipulating_streams"></a>5.4. Manipulating streams</h4>
+<div class="paragraph">
+<p>You can also transform streams using the following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Outgoing @Incoming Publisher&lt;Message&lt;O&gt;&gt; method(Publisher&lt;Message&lt;I&gt;&gt; pub)</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming PublisherBuilder&lt;Message&lt;O&gt;&gt; method(PublisherBuilder&lt;Message&lt;I&gt;&gt; pub)</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming Publisher&lt;O&gt; method(Publisher&lt;I&gt; pub)</code></p>
+</li>
+<li>
+<p><code>@Outgoing @Incoming PublisherBuilder&lt;O&gt; method(PublisherBuilder&lt;I&gt; pub)</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_reactive_streams_reactive_stream_operators_rx_java"><a class="anchor" href="#_reactive_streams_reactive_stream_operators_rx_java"></a>5.5. Reactive Streams, Reactive Stream Operators, RX Java</h4>
+<div class="paragraph">
+<p>SmallRye Reactive Messaging supports:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Publisher</code>, <code>PublisherBuilder</code> (MicroProfile Reactive Streams Operators), <code>Flowable</code> (RX Java 2)</p>
+</li>
+<li>
+<p><code>Processor</code>, <code>ProcessorBuilder</code> (MicroProfile Reactive Streams Operators)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_acknowledgement"><a class="anchor" href="#_acknowledgement"></a>6. Acknowledgement</h3>
+<div class="paragraph">
+<p>Messages may require acknowledgment to inform the transport layer that the message has been processed. Methods
+annotated with <code>@Incoming</code> and also be annotated with <code>org.eclipse.microprofile.reactive.messaging.Acknowledgment</code> to
+configure the acknowledgement policies.</p>
+</div>
+<div class="paragraph">
+<p>Four policies are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NONE</code>: no acknowledgement</p>
+</li>
+<li>
+<p><code>MANUAL</code>: the developer is responsible for the acknowledgement. It can be perform using <code>Message.ack()</code>.</p>
+</li>
+<li>
+<p><code>PRE_PROCESSING</code>: the acknowledgement is managed automatically before the processing</p>
+</li>
+<li>
+<p><code>POST_PROCESSING</code>: the acknowledgement is managed automatically after the processing</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following example describes how <code>PRE_PROCESSING</code> can be configured:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Incoming("i")
+  @Outgoing("j")
+  @Acknowledgment(Acknowledgment.Strategy.PRE_PROCESSING)
+  public String autoAck(String input) {
+    return input.toUpperCase();
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Manual acknowledgement can be achieved as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Incoming("i")
+  @Outgoing("j")
+  @Acknowledgment(Acknowledgment.Strategy.MANUAL)
+  public CompletionStage&lt;Message&lt;String&gt;&gt; manualAck(Message&lt;String&gt; input) {
+    return CompletableFuture.supplyAsync(input::getPayload)
+      .thenApply(Message::of)
+      .thenCompose(m -&gt; input.ack().thenApply(x -&gt; m));
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Default acknowledgement depends on the method signature:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Signature</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Default policy</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Supported policy</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Incoming Subscriber&lt;Message&lt;I&gt;&gt; method()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre, Post, Manual</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Incoming Subscriber&lt;I&gt; method()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre, Post</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Incoming void method(I msg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre, Post</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Incoming CompletionStage&lt;?&gt; method(Message&lt;I&gt; msg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre, Post, Manual</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Incoming CompletionStage&lt;?&gt; method(I msg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre, Post</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming Processor&lt;Message&lt;I&gt;, Message&lt;O&gt;&gt; method()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Manual, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming Processor&lt;I, O&gt; method()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming ProcessorBuilder&lt;Message&lt;I&gt;, Message&lt;O&gt;&gt; method()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Manual, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming ProcessorBuilder&lt;I, O&gt; method()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming Publisher&lt;Message&lt;O&gt;&gt; method(Message&lt;I&gt; msg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Manual, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming Publisher&lt;O&gt; method(I payload)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming PublisherBuilder&lt;Message&lt;O&gt;&gt; method(Message&lt;I&gt; msg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Manual, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming PublisherBuilder&lt;O&gt; method(I payload)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming Message&lt;O&gt; method(Message&lt;I&gt; msg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Manual, Pre, Post</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming O method(I payload)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre, Post</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming CompletionStage&lt;Message&lt;O&gt;&gt; method(Message&lt;I&gt; msg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Manual, Pre, Post</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming CompletionStage&lt;O&gt; method(I payload)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre, Post</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming Publisher&lt;Message&lt;O&gt;&gt; method(Publisher&lt;Message&lt;I&gt;&gt; pub)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Manual, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming PublisherBuilder&lt;Message&lt;O&gt;&gt; method(PublisherBuilder&lt;Message&lt;I&gt;&gt; pub)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Manual, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming Publisher&lt;O&gt; method(Publisher&lt;I&gt; pub)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Outgoing @Incoming PublisherBuilder&lt;O&gt; method(PublisherBuilder&lt;I&gt; pub)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None, Pre</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_connecting_transports"><a class="anchor" href="#_connecting_transports"></a>7. Connecting transports</h3>
+<div class="paragraph">
+<p>SmallRye Reactive Messaging supports various transport <em>protocols</em>.
+This section explains how you can configure these different <em>connectors</em>.
+Before listing the supported transports, we need to explain the configuration format.
+SmallRye Reactive Messaging uses MicroProfile Config as main configuration source.
+To enable the configuration, add an implementation of MicroProfile Config in your <em>classpath</em>.
+For instance, add the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.config&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-config&lt;/artifactId&gt;
+  &lt;version&gt;{smallrye-config-version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then create a <em>properties</em> file in <code>src/main/resources/META-INF/microprofile-config.properties</code> such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code># Configure two channels using a dummy connector
+mp.messaging.incoming.dummy-incoming-channel.connector=dummy
+mp.messaging.incoming.dummy-incoming-channel.attribute=value
+mp.messaging.outgoing.dummy-outgoing-channel.connector=dummy
+mp.messaging.outgoing.dummy-outgoing-channel.attribute=value</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each channel (both incoming and outgoing) are configured individually in this file:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>an <code>incoming</code> channel consumes data from a message broker or something producing data.
+It can be connected to a method annotated with an <code>@Incoming</code> using the same channel name.</p>
+</li>
+<li>
+<p>an <code>outgoing</code> consumes data from the application and forward it to a message broker or something consuming data.
+It can be connected to a method annotated with an <code>@Outgoing</code> using the same channel name.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The configuration format is the follow:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.[outgoing|incoming].[channel-name].[attribute]=[value]</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>the <code>[outgoing|incoming]</code> segment indicates the direction of the channel</p>
+</li>
+<li>
+<p>the <code>[channel-name]</code> segment configures the name of the channel</p>
+</li>
+<li>
+<p>the <code>[attribute]</code> segment is the name of the attribute to configure.
+Most of the time the attributes are specific to the transport layer</p>
+</li>
+<li>
+<p>the <code>[value]</code> is the value</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>All <code>channels</code> must declare the <code>connector</code> attribute matching the name of the connector.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example of a channel using a MQTT connector, consuming data from a MQTT broker, and a channel using a Kafka connector (forwarding data to Kafka):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code># [Channel - health] - Consume data from MQTT
+mp.messaging.incoming.health.topic=neo
+mp.messaging.incoming.health.connector=smallrye-mqtt
+mp.messaging.incoming.health.host=localhost
+mp.messaging.incoming.health.broadcast=true
+# [/Channel - health]
+
+# [Channel - data] - Produce data to Kafka
+mp.messaging.outgoing.data.connector=smallrye-kafka
+mp.messaging.outgoing.data.bootstrap.servers=localhost:9092
+mp.messaging.outgoing.data.key.serializer=org.apache.kafka.common.serialization.StringSerializer
+mp.messaging.outgoing.data.value.serializer=io.vertx.kafka.client.serialization.JsonObjectSerializer
+mp.messaging.outgoing.data.acks=1
+# [/Channel - data]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_receiving_and_sending_messages_with_apache_kafka"><a class="anchor" href="#_receiving_and_sending_messages_with_apache_kafka"></a>8. Receiving and Sending messages with Apache Kafka</h3>
+<div class="paragraph">
+<p>The Kafka Connector let you interact with a Kafka broker, and so retrieve and send Kafka messages.
+The Kafka support is based on the <a href="https://vertx.io/docs/vertx-kafka-client/java/">Vert.x Kafka Client</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_dependency"><a class="anchor" href="#_dependency"></a>8.1. Dependency</h4>
+<div class="paragraph">
+<p>To enable the Kafka support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-kafka&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_retrieving_messages_from_kafka"><a class="anchor" href="#_retrieving_messages_from_kafka"></a>8.2. Retrieving messages from Kafka</h4>
+<div class="paragraph">
+<p>To retrieve messages from a Kafka topic, you need the following configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code># [Source - heartbeat] - Consume data from Kafka
+mp.messaging.incoming.kafka-heartbeat.connector=smallrye-kafka
+mp.messaging.incoming.kafka-heartbeat.topic=heartbeat
+mp.messaging.incoming.kafka-heartbeat.bootstrap.servers=localhost:9092
+mp.messaging.incoming.kafka-heartbeat.group.id=demo
+mp.messaging.incoming.kafka-heartbeat.value.deserializer=io.vertx.kafka.client.serialization.JsonObjectDeserializer
+# [/Source - heartbeat]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>connector</code> attribute is required to indicate you are configuring the Kafka transport. Supported attributes are listed
+in the following table:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">topic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the <code>channel-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The topic to consume, use the <code>channel-name</code> if not set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bootstrap.servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:9092</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the comma separated list of servers (host:port), Can also
+be set using the <code>kafka.bootstrap.servers</code> config property.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">key.deserializer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the codec used to deserialize the key, <code>String</code> by default</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value.deserializer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the codec used to deserialize the value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">group.id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false (BUT should be set in production)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the group id. A new random group id is generated if omitted. This feature is only for development. In production, a group id should be set.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable.auto.commit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whether or not the messages are committed automatically</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">retry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether it should retry to re-established the connection to the broker is it fails</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">retry-attempts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Infinite</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of retries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">retry-max-wait</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Max wait time in seconds between retries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">broadcast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the received messages can be dispatched to several <code>@Incoming</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can also configure any attributes used by the <a href="https://vertx.io/docs/vertx-kafka-client/java/">Vert.x Kafka client</a>.</p>
+</div>
+<div class="paragraph">
+<p>When receiving a message from Kafka, you get an instance of <code>Message</code> with an instance of <code>io.smallrye.reactive.messaging.kafka.IncomingKafkaRecordMetadata</code> in the metadata:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Optional&lt;IncomingKafkaRecordMetadata&gt; metadata
+    = message.getMetadata(IncomingKafkaRecordMetadata.class);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When consuming a message from Kafka, you can also get a <code>io.smallrye.reactive.messaging.kafka.KafkaRecord</code> instead of a <em>raw</em> message.
+This <code>KafkaRecord</code> provides method to access the value stored in the metadata listed above.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Incoming("from-kafka")
+  public void consume(KafkaRecord&lt;String, JsonObject&gt; message) {
+    JsonObject payload = message.getPayload();
+    String key = message.getKey();
+    Headers headers = message.getHeaders();
+    int partition = message.getPartition();
+    Instant timestamp = message.getTimestamp();
+  }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>KafkaMessage</code> class is now deprecated, you should use <code>KafkaRecord</code> instead of directly use the metadata.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_writing_messages_in_kafka"><a class="anchor" href="#_writing_messages_in_kafka"></a>8.3. Writing messages in Kafka</h4>
+<div class="paragraph">
+<p>To send messages to a Kafka topic, you need the following configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code># [Sink - data] - Produce data to Kafka
+mp.messaging.outgoing.data.connector=smallrye-kafka
+mp.messaging.outgoing.data.value.serializer=io.vertx.kafka.client.serialization.JsonObjectSerializer
+# [/Sink - data]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>connector</code> attribute is required to indicate you are configuring the Kafka transport. Supported attributes are listed
+in the following table:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">topic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the <code>channel-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The topic to consume, if not set it must be set in the <code>message</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bootstrap.servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:9092</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the comma separated list of servers (host:port), Can also
+be set using the <code>kafka.bootstrap.servers</code> config property.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">key.serializer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the codec used to serialize the key, <code>String</code> if not set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value.serializer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the codec used to serialize the value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the key to be used, can be overridden by the message</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">partition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">none</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the partition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">waitForWriteCompletion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whether it needs to wait for the <em>write</em> operation to complete before processing the next message</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can also configure any attributes used by the <a href="https://vertx.io/docs/vertx-kafka-client/java/">Vert.x Kafka client</a>.</p>
+</div>
+<div class="paragraph">
+<p>When sending a message to Kafka, you can either use a <code>OutgoingKafkaRecord</code> or a <em>raw</em> <code>Message</code> with an instance of <code>io.smallrye.reactive.messaging.kafka.OutgoingKafkaRecordMetadata</code> in the message metadata.
+Use <code>io.smallrye.reactive.messaging.kafka.OutgoingKafkaRecordMetadata.builder()</code> to create instances of <code>OutgoingKafkaRecordMetadata</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can also create a <code>io.smallrye.reactive.messaging.kafka.KafkaRecord</code> that creates the <code>OutgoingKafkaRecordMetadata</code> for you:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Outgoing("to-kafka")
+  public Message&lt;String&gt; produce(Message&lt;String&gt; incoming) {
+    return KafkaRecord.of("topic", "key", incoming.getPayload());
+  }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_receiving_and_sending_amqp_1_0_messages"><a class="anchor" href="#_receiving_and_sending_amqp_1_0_messages"></a>9. Receiving and Sending AMQP 1.0 Messages</h3>
+<div class="paragraph">
+<p>You can connect to an AMQP broker or server as a source or sink.
+The AMQP support is based on the <a href="https://vertx.io/docs/vertx-amqp-client/java/">Vert.x AMQP Client</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_dependency_2"><a class="anchor" href="#_dependency_2"></a>9.1. Dependency</h4>
+<div class="paragraph">
+<p>To enable the AMQP support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-amqp&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_receiving_messages_from_amqp"><a class="anchor" href="#_receiving_messages_from_amqp"></a>9.2. Receiving messages from AMQP</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.incoming.data.address=data
+mp.messaging.incoming.data.connector=smallrye-amqp
+mp.messaging.incoming.data.host=localhost
+mp.messaging.incoming.data.port=5672
+mp.messaging.incoming.data.username=username
+mp.messaging.incoming.data.password=secret
+mp.messaging.incoming.data.broadcast=true
+mp.messaging.incoming.data.containerId=my-container-id</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As the AMQP support is based on the Vert.x AMQP client, you can pass any configuration supported by the client.
+Check the  <a href="https://vertx.io/docs/vertx-amqp-client/java/">documentation</a> of the client for further details.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>address</code> attribute is not set the channel name is used instead.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Message coming from AMQP are <code>io.smallrye.reactive.messaging.amqp.AmqpMessage</code>.
+The payload must be a supported AMQP type.
+The <code>AmqpMessage</code> implements <code>Message</code> and provide additional metadata related to AMQP.
+These metadata can be retrieved using the <code>io.smallrye.reactive.messaging.amqp.IncomingAmqpMetadata</code> class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IncomingAmqpMetadata metadata = message.getMetadata(IncomingAmqpMetadata.class);
+String address = metadata.getAddress();
+int priority = metadata.getPriority();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sending_messages_to_amqp"><a class="anchor" href="#_sending_messages_to_amqp"></a>9.3. Sending messages to AMQP</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.address=data
+mp.messaging.outgoing.data.connector=smallrye-amqp
+mp.messaging.outgoing.data.host=localhost
+mp.messaging.outgoing.data.port=5672
+mp.messaging.outgoing.data.username=username
+mp.messaging.outgoing.data.password=secret
+mp.messaging.outgoing.data.containerId=my-container-id
+mp.messaging.outgoing.data.durable=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The AMQP connector dispatches messages to the AMQP broker or server.
+You can send <em>bare</em> message or <code>io.smallrye.reactive.messaging.amqp.AmqpMessage</code>, built with <code>io.smallrye.reactive.messaging.amqp.AmqpMessage.builder()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The payload of the message must be one of the following type:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Boolean, Byte, Character, Double, Float, Integer, Long, Short</p>
+</li>
+<li>
+<p>Buffer</p>
+</li>
+<li>
+<p>Instant</p>
+</li>
+<li>
+<p>(Vert.x) JSON Array or JSON Object (send as binary with content type set to <code>application/json</code>)</p>
+</li>
+<li>
+<p>UUID</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Otherwise, the connector invokes <code>toString</code> on the wrapped payload.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>address</code> attribute is not set the channel name is used instead.
+If the AMQP Message has an address set, this address is used.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Instead of an <code>AMQPMessage</code> you can attach an instance of <code>io.smallrye.reactive.messaging.amqp.OutgoingAmqpMessage</code> as metadata:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Message&lt;String&gt; incoming = ...;
+OutgoingAmqpMessage amqp = OutgoingAmqpMessage.builder()
+    .setAddress("some-adress")
+    .build();
+Message&lt;String&gt; outgoing = incoming.withMetadata(incoming.getMetadata().with(amqp));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_global_configuration"><a class="anchor" href="#_global_configuration"></a>9.4. Global configuration</h4>
+<div class="paragraph">
+<p>The host, port, username, password, SSL connection, reconnect attempts, reconnect interval,
+and connection timeout can also be configured using the <code>amqp-host</code>, <code>amqp-port</code>, <code>amqp-username</code>,
+<code>amqp-password</code>, <code>amqp-use-ssl</code>, <code>amqp-reconnect-attempts</code>, <code>amqp-reconnect-interval</code>, and
+<code>amqp-connect-timeout</code> configuration properties.</p>
+</div>
+<div class="paragraph">
+<p>Optionally, the connection configuration details can be specified using a named bean of the type <code>AmqpClientOptions</code> which will be used to configure the vertx clients.</p>
+</div>
+<div class="paragraph">
+<p>Example of named bean:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Produces
+    @Named("custom-client-config")
+    public AmqpClientOptions amqpClientConfig() {
+        return new AmqpClientOptions()
+                .setHost("localhost")
+                .setPort(5672)
+                .setUsername("username")
+                .setPassword("secret")
+                .setContainerId("my-container-id");
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This kind of configuration can be applied at two levels: channel and global.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The bean configuration at global level won&#8217;t apply to a channel with bean configuration specified. In other words, bean configuration priority is: first channel level and second global level.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example of using a named bean to configure one channel:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.incoming.data.address=data
+mp.messaging.incoming.data.connector=smallrye-amqp
+mp.messaging.incoming.data.broadcast=true
+mp.messaging.incoming.data.client-options-name=custom-client-config</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example of using a named bean to configure all channels:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>amqp-client-options-name=custom-client-config</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_integrating_with_apache_camel"><a class="anchor" href="#_integrating_with_apache_camel"></a>10. Integrating with Apache Camel</h3>
+<div class="paragraph">
+<p>You can receive messages from a Camel Route or send messages to a Camel route. It give you the ability to connect to
+almost any existing system.</p>
+</div>
+<div class="sect3">
+<h4 id="_dependency_3"><a class="anchor" href="#_dependency_3"></a>10.1. Dependency</h4>
+<div class="paragraph">
+<p>To enable the Camel support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-camel&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_camel_reactive"><a class="anchor" href="#_camel_reactive"></a>10.2. Camel Reactive</h4>
+<div class="paragraph">
+<p>When using the dependency, your bean can retrieve a
+ <code>org.apache.camel.component.reactive.streams.api.CamelReactiveStreamsService</code> object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Default Camel Context
+@Inject
+private CamelContext camel;
+
+// Camel Reactive service
+@Inject
+private CamelReactiveStreamsService camel_reactive;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_using_camel_route_in_outgoing_method"><a class="anchor" href="#_using_camel_route_in_outgoing_method"></a>10.3. Using Camel Route in @Outgoing method</h4>
+<div class="paragraph">
+<p>Here is an example of method annotated with <code>@Outgoing</code> directly using a Camel route:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Outgoing("camel")
+public Publisher&lt;Exchange&gt; source() {
+  return camel_reactive.from("seda:camel");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_using_camel_route_in_incoming_method"><a class="anchor" href="#_using_camel_route_in_incoming_method"></a>10.4. Using Camel Route in @Incoming method</h4>
+<div class="paragraph">
+<p>Here is an example of method annotated with <code>@Incoming</code> directly using a Camel route:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("camel")
+public Subscriber&lt;String&gt; sink() {
+  return camel_reactive.subscriber("file:./target?fileName=values.txt&amp;fileExist=append", String.class);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another possibility is to use a <em>producer</em>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("camel")
+public CompletionStage&lt;Void&gt; sink(String value) {
+  return camel.createProducerTemplate().asyncSendBody("file:./target?fileName=values.txt&amp;fileExist=append", value).thenApply(x -&gt; null);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_retrieving_messages_from_a_camel_route"><a class="anchor" href="#_retrieving_messages_from_a_camel_route"></a>10.5. Retrieving messages from a Camel Route</h4>
+<div class="paragraph">
+<p>The previous example requires your code to deal with Maven route directly. It can be externalized to the configuration as
+follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.incoming.data.connector=smallrye-camel
+mp.messaging.incoming.data.endpoint-uri:seda:my-route</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>endpoint-uri</code> configures the route to use. It can be:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>a <code>reactive-stream</code> route such as <code>reactive-streams:out</code></p>
+</li>
+<li>
+<p>a <em>regular</em> route such as <code>seda:my-route</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_forwarding_messages_to_a_camel_route"><a class="anchor" href="#_forwarding_messages_to_a_camel_route"></a>10.6. Forwarding messages to a Camel Route</h4>
+<div class="paragraph">
+<p>The following configuration describe a sink using a Camel route:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.connector=smallrye-camel
+mp.messaging.outgoing.data.endpoint-uri:seda:my-route</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>endpoint-uri</code> configures the route to use. It can be:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>a <code>reactive-stream</code> route such as <code>reactive-streams:in</code></p>
+</li>
+<li>
+<p>a <em>regular</em> route such as <code>file:./target?fileName=values.txt&amp;fileExist=append</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the first case, it can be used as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+public class BeanWithCamelSinkUsingRSRoute extends RouteBuilder {
+
+  @Outgoing("data")
+  public Publisher&lt;Message&lt;String&gt;&gt; source() {
+    return ReactiveStreams.of("a", "b", "c", "d")
+      .map(String::toUpperCase)
+      .map(Message::of)
+      .buildRs();
+  }
+
+  // Declare a route
+  @Override
+  public void configure() {
+    from("reactive-streams:in").to("file:./target?fileName=values.txt&amp;fileExist=append");
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_interacting_using_mqtt"><a class="anchor" href="#_interacting_using_mqtt"></a>11. Interacting using MQTT</h3>
+<div class="paragraph">
+<p>You have two options here:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>you can connect to an MQTT broker or server as a source or sink. The MQTT support is based on
+the <a href="https://vertx.io/docs/vertx-mqtt/java/#_vert_x_mqtt_client">Vert.x MQTT Client</a>.</p>
+</li>
+<li>
+<p>you can receive MQTT messages as an MQTT server. The MQTT support is based on the
+<a href="https://vertx.io/docs/vertx-mqtt/java/#_vert_x_mqtt_server">Vert.x MQTT Server</a></p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_mqtt_client_incoming_or_outgoing"><a class="anchor" href="#_mqtt_client_incoming_or_outgoing"></a>11.1. MQTT client (incoming or outgoing)</h4>
+<div class="paragraph">
+<p>For if you want to produce or consumer MQTT messages coming or going to an MQTT broker
+or server.</p>
+</div>
+<div class="sect4">
+<h5 id="_dependency_4"><a class="anchor" href="#_dependency_4"></a>Dependency</h5>
+<div class="paragraph">
+<p>To enable the MQTT client support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-mqtt&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_retrieving_messages_from_an_mqtt_broker_or_server"><a class="anchor" href="#_retrieving_messages_from_an_mqtt_broker_or_server"></a>Retrieving messages from an MQTT broker or server</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.incoming.data.topic=data
+mp.messaging.incoming.data.connector=smallrye-mqtt
+mp.messaging.incoming.data.host=localhost
+mp.messaging.incoming.data.port=8883
+mp.messaging.incoming.data.username=username
+mp.messaging.incoming.data.password=secret
+mp.messaging.incoming.data.broadcast=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Message coming from MQTT are <code>Message&lt;byte[]&gt;</code>. The payload is a <code>byte[]</code>. You can also receive
+<code>io.smallrye.reactive.messaging.mqtt.MqttMessage</code> which give you access to message metadata.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>topic</code> attribute is not set the channel name is used instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_forwarding_messages_to_an_mqtt_broker_or_server"><a class="anchor" href="#_forwarding_messages_to_an_mqtt_broker_or_server"></a>Forwarding messages to an MQTT broker or server</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.topic=data
+mp.messaging.outgoing.data.connector=smallrye-mqtt
+mp.messaging.outgoing.data.host=localhost
+mp.messaging.outgoing.data.port=8883
+mp.messaging.outgoing.data.username=username
+mp.messaging.outgoing.data.password=secret</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The payload of message forwarded to an MQTT broker or server must be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a <code>io.vertx.core.json.JsonObject</code> or a <code>io.vertx.core.json.JsonArray</code></p>
+</li>
+<li>
+<p>a <code>String</code> or a primitive types</p>
+</li>
+<li>
+<p>a <code>byte[]</code> or a Vert.x Buffer</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other objects are mapped to JSON.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>topic</code> attribute is not set the channel name is used instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_advanced_configuration"><a class="anchor" href="#_advanced_configuration"></a>Advanced configuration</h5>
+<div class="paragraph">
+<p>Check <code>io.smallrye.reactive.messaging.mqtt.MqttSource.MqttSource</code> and
+<code>io.smallrye.reactive.messaging.mqtt.MqttSource.MqttSink</code> for further details on the attributes.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mqtt_server"><a class="anchor" href="#_mqtt_server"></a>11.2. MQTT server</h4>
+<div class="paragraph">
+<p>For if you want your code to act as an MQTT server to receive MQTT messages from one or more
+clients.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This isn&#8217;t a fully featured MQTT server, it will only handle publish requests and their
+acknowledgment (for QoS 1 &amp; 2). It will ignore subscription requests for instance.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The server has no persistence, if no subscribers are listening, messages will be dropped.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_dependency_5"><a class="anchor" href="#_dependency_5"></a>Dependency</h5>
+<div class="paragraph">
+<p>To enable the MQTT server support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-mqtt-server&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_receive_mqtt_messages_from_one_or_more_mqtt_client"><a class="anchor" href="#_receive_mqtt_messages_from_one_or_more_mqtt_client"></a>Receive MQTT messages from one or more MQTT client</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code># [Source - messages] - Receive MQTT messages
+# Required
+mp.messaging.incoming.messages.connector=smallrye-mqtt-server
+
+#mp.messaging.incoming.messages.host=0.0.0.0
+#mp.messaging.incoming.messages.port=1883
+# If clientid should be auto-generated when it's "zero-bytes"
+#mp.messaging.incoming.messages.auto-client-id=true
+# Max MQTT message size (variable header + payload)
+#mp.messaging.incoming.messages.max-message-size=-1
+# The timeout on CONNECT packet
+#mp.messaging.incoming.messages.timeout-on-connect=90
+# The TCP receive buffer size
+#mp.messaging.incoming.messages.receive-buffer-size=-1
+# [/Source - messages]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Message coming from MQTT are <code>Message&lt;byte[]&gt;</code>. The payload is a <code>byte[]</code>. You can also receive
+<code>io.smallrye.reactive.messaging.mqtt.server.MqttMessage</code> which give you access to message metadata.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_emitting_http_requests"><a class="anchor" href="#_emitting_http_requests"></a>12. Emitting HTTP requests</h3>
+<div class="paragraph">
+<p>You can also <em>push</em> incoming messages to an HTTP endpoint using the <em>HTTP connector</em>.
+It maps the messages into HTTP requests and sends the <em>payload</em> in the request body.</p>
+</div>
+<div class="paragraph">
+<p>Note that this connector uses a reactive and non-blocking HTTP client.</p>
+</div>
+<div class="sect3">
+<h4 id="_dependency_6"><a class="anchor" href="#_dependency_6"></a>12.1. Dependency</h4>
+<div class="paragraph">
+<p>To enable the HTTP support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-http&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_forwarding_messages_to_http"><a class="anchor" href="#_forwarding_messages_to_http"></a>12.2. Forwarding messages to HTTP</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.url=http://localhost:8089
+mp.messaging.outgoing.data.connector=smallrye-http</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On this connector you can configure:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Mandatory</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The HTTP URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">method</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The HTTP verb to use among <code>POST</code> and <code>PUT</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_customizing_the_http_request"><a class="anchor" href="#_customizing_the_http_request"></a>12.3. Customizing the HTTP request</h4>
+<div class="paragraph">
+<p>By attaching an instance of <code>io.smallrye.reactive.messaging.http.HttpResponseMetadata</code> in the message you produce, you can configure the dispatching:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Incoming("source")
+    @Outgoing("to-http")
+    public HttpMessage&lt;JsonObject&gt; process(Message&lt;String&gt; incoming) {
+        return HttpMessage.HttpMessageBuilder.&lt;JsonObject&gt;create()
+            .withMethod("PUT")
+            .withPayload(new JsonObject().put("value", incoming.getPayload().toUpperCase()))
+            .withHeader("Content-Type", "application/json")
+            .build();
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_supported_payload"><a class="anchor" href="#_supported_payload"></a>12.4. Supported payload</h4>
+<div class="paragraph">
+<p>Supported payloads are:
+* String
+* Vert.x Buffers, byte array, <code>ByteBuffer</code>
+* Vert.x <code>JsonObject</code> and <code>JsonArray</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_interacting_with_the_vert_x_eventbus"><a class="anchor" href="#_interacting_with_the_vert_x_eventbus"></a>13. Interacting with the Vert.x Eventbus</h3>
+<div class="paragraph">
+<p>The Vert.x Eventbus is the backbone of Vert.x applications. It allows different application components to interact in
+an asynchronous way.</p>
+</div>
+<div class="sect3">
+<h4 id="_dependency_7"><a class="anchor" href="#_dependency_7"></a>13.1. Dependency</h4>
+<div class="paragraph">
+<p>To enable the Vert.x EventBus support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-vertx-eventbus&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_retrieving_messages_from_the_event_bus"><a class="anchor" href="#_retrieving_messages_from_the_event_bus"></a>13.2. Retrieving messages from the event bus</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.incoming.data.address=&lt;the-eventbus-address&gt;
+mp.messaging.incoming.data.connector=smallrye-vertx-eventbus
+mp.messaging.incoming.data.use-reply-as-ack=&lt;true|false&gt;
+mp.messaging.incoming.data.broadcast=&lt;true|false&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>address</code> indicates from which event bus address the messages are retrieved. <code>use-reply-as-ack</code> instructs the
+framework to reply to the event bus message as acknowledgement mechanism. Finally, the <code>broadcast</code> entry broadcasts the
+to many subscribers.</p>
+</div>
+<div class="paragraph">
+<p>The received messages are instance of <code>io.smallrye.reactive.messaging.eventbus.EventBusMessage</code>. The payload is the message
+body. From the <code>EventBusMessage</code>, you can retrieve the headers, address&#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sending_messages_to_the_event_bus"><a class="anchor" href="#_sending_messages_to_the_event_bus"></a>13.3. Sending messages to the event bus</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.address=&lt;the-eventbus-address&gt;
+mp.messaging.outgoing.data.connector=smallrye-vertx-eventbus
+mp.messaging.outgoing.data.publish=&lt;true|false&gt;
+mp.messaging.outgoing.data.expect-reply=&lt;true|false&gt;
+mp.messaging.outgoing.data.codec=&lt;codec-name&gt;
+mp.messaging.outgoing.data.timeout=1000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>address</code> indicates where the messages are sent. <code>publish</code> choose whether the message is sent to a single consumer (
+<code>false</code>) or broadcast (<code>true</code>). <code>expect-reply</code> indicates if you expect a reply. No other messages will be sent until the
+reply is received. <code>codec</code> is the name of the codec (it must have been registered explicitly). Finally, the <code>timeout</code>
+specifies the reply timeout.</p>
+</div>
+<div class="paragraph">
+<p>The event bus message is created from the Reactive Messaging message. The payload is passed as body.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_receiving_and_sending_messages_using_jms_java_message_service"><a class="anchor" href="#_receiving_and_sending_messages_using_jms_java_message_service"></a>14. Receiving and Sending messages using JMS (Java Message Service)</h3>
+<div class="paragraph">
+<p>You can use SmallRye Reactive Messaging to receive and send JMS messages.</p>
+</div>
+<div class="sect3">
+<h4 id="_dependency_8"><a class="anchor" href="#_dependency_8"></a>14.1. Dependency</h4>
+<div class="paragraph">
+<p>To enable the JMS support, you need the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-jms&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The connector is named <code>smallrye-jms</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_connection_factory_requirement"><a class="anchor" href="#_connection_factory_requirement"></a>14.2. Connection Factory Requirement</h4>
+<div class="paragraph">
+<p>To interact with JMS, you need to <em>expose</em> a <code>javax.jms.ConnectionFactory</code> as CDI bean.
+For example, you need a bean producing the <code>ConnectionFactory</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+public class ConnectionFactoryBean {
+
+    @Inject @ConfigProperty(name="jms-username")
+    String username;
+
+    @Inject @ConfigProperty(name="jms-password")
+    String password;
+
+    @Produces
+    ConnectionFactory factory() {
+        ActiveMQJMSConnectionFactory factory = new ActiveMQJMSConnectionFactory(
+                "tcp://localhost:61616",
+                username, password);
+        return factory;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The JMS connector is consuming the produced <em>factory</em> to connect to the broker.</p>
+</div>
+<div class="sect4">
+<h5 id="_selecting_connectionfactory"><a class="anchor" href="#_selecting_connectionfactory"></a>Selecting ConnectionFactory</h5>
+<div class="paragraph">
+<p>In case you have several connection factories, you can use the <code>@Named</code> qualified on your factory to specify the name.
+Then, in the channel configuration, configure the name as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Configure the connector globally
+mp.messaging.connector.smallrye-jms.connection-factory-name=my-factory-name
+# Configure a specific incoming channel
+mp.messaging.incoming.my-channel.connection-factory-name=my-factory-name
+# Configure a specific outgoing channel
+mp.messaging.outgoing.my-channel.connection-factory-name=my-factory-name</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_configure_credentials"><a class="anchor" href="#_configure_credentials"></a>Configure credentials</h5>
+<div class="paragraph">
+<p>To configure the <em>username</em> and <em>password</em> to connect to the broker and create a session, use the following properties:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Configure the connector globally
+mp.messaging.connector.smallrye-jms.username=my-username
+mp.messaging.connector.smallrye-jms.password=secret
+# Configure a specific incoming channel
+mp.messaging.incoming.my-channel.username=my-username
+mp.messaging.incoming.my-channel.password=secret
+# Configure a specific outgoing channel
+mp.messaging.outgoing.my-channel.username=my-username
+mp.messaging.outgoing.my-channel.password=secret</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_session_mode"><a class="anchor" href="#_session_mode"></a>Session mode</h5>
+<div class="paragraph">
+<p>By default, the connector uses the <code>AUTO_ACKNOWLEDGE</code> session mode.
+You can configure it using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Configure the connector globally
+mp.messaging.connector.smallrye-jms.session-mode=AUTO_ACKNOWLEDGE
+# Configure a specific incoming channel
+mp.messaging.incoming.my-channel.session-mode=AUTO_ACKNOWLEDGE
+# Configure a specific outgoing channel
+mp.messaging.outgoing.my-channel.session-mode=AUTO_ACKNOWLEDGE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Accepted values are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AUTO_ACKNOWLEDGE</code></p>
+</li>
+<li>
+<p><code>SESSION_TRANSACTED</code></p>
+</li>
+<li>
+<p><code>CLIENT_ACKNOWLEDGE</code></p>
+</li>
+<li>
+<p><code>DUPS_OK_ACKNOWLEDGE</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Any other value is rejected, and the deployment would fail.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_configure_the_client_id"><a class="anchor" href="#_configure_the_client_id"></a>Configure the client id</h5>
+<div class="paragraph">
+<p>When dealing with <em>topics</em>, your subscription must need to be identified with a <em>client-id</em>.
+Configure the client id as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Configure the connector globally
+mp.messaging.connector.smallrye-jms.client-id=my-id
+# Configure a specific incoming channel
+mp.messaging.incoming.my-channel.client-id=my-id
+# Configure a specific outgoing channel
+mp.messaging.outgoing.my-channel.client-id=my-id</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_json_b_requirement"><a class="anchor" href="#_json_b_requirement"></a>14.3. JSON-B Requirement</h4>
+<div class="paragraph">
+<p>The connector uses JSON-B to serialize and deserialize objects.
+You need to have an implementation of JSON-B available.
+Check <a href="http://json-b.net/" class="bare">http://json-b.net/</a> for more details.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sending_jms_messages"><a class="anchor" href="#_sending_jms_messages"></a>14.4. Sending JMS messages</h4>
+<div class="paragraph">
+<p>To send a JMS message, you need to configure the connector as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text"># Queue:
+mp.messaging.outgoing.my-channel.connector=smallrye-jms
+mp.messaging.outgoing.my-channel.destination=my-queue
+
+# Topic:
+mp.messaging.outgoing.my-channel.connector=smallrye-jms
+mp.messaging.outgoing.my-channel.destination=my-topic
+mp.messaging.outgoing.my-channel.destination-type=topic
+mp.messaging.outgoing.my-channel.client-id=my-id</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_sending_string_and_primitives"><a class="anchor" href="#_sending_string_and_primitives"></a>Sending String and primitives</h5>
+<div class="paragraph">
+<p>String and primitive types can be forwarded as payload:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("...")
+@Outgoing("my-channel")
+public String sendToJms(String s) {
+  return s.toUpperCase();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_sending_objects"><a class="anchor" href="#_sending_objects"></a>Sending objects</h5>
+<div class="paragraph">
+<p>Objects are serialized using <strong>JSON-B</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("...")
+@Outgoing("my-channel")
+public Person sendToJms(...) {
+  // ...
+  return new Person("bob", 42);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the previous example, it requires that the <code>Person</code> class can be serialized to JSON.
+Note that the class name is passed in the <code>JMSType</code> property.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_sending_byte_arrays"><a class="anchor" href="#_sending_byte_arrays"></a>Sending byte arrays</h5>
+<div class="paragraph">
+<p>You can also send <code>byte[]</code> payloads:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("...")
+@Outgoing("my-channel")
+public byte[] sendToJms(...) {
+  // ...
+  byte[] array = ...;
+  return array;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_sending_jms_message"><a class="anchor" href="#_sending_jms_message"></a>Sending JMS Message</h5>
+<div class="paragraph">
+<p>Finally, you can send a JMS Message (<code>javax.jms.Message</code>) directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("...")
+@Outgoing("my-channel")
+public javax.jms.Message sendToJms(...) {
+  // ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_connector_configuration"><a class="anchor" href="#_connector_configuration"></a>Connector configuration</h5>
+<div class="paragraph">
+<p>The following table summarizes the attribute you can configure on a JMS outgoing channel.
+Don&#8217;t forget to prefix them using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Global configuration for all the channels
+mp.messaging.connector.smallrye-jms.attribute=value
+# Configure the specific `my-jms-channel` channel
+mp.messaging.outgoing.my-jms-channel.attribute=value</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">destination</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the <code>channel-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The destination name, default to the channel name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">destination-type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>queue</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of destination (<code>queue</code> or <code>topic</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delivery-delay</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The delivery delay in milliseconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delivery-mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>persistent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The delivery mode (<code>persistent</code> or <code>non_persistent</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable-message-id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disable sending a generated message id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable-message-timestamp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disable sending a generated timestamp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">correlation-id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the correlation-id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ttl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The time-to-live of the outgoing message in milliseconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">priority</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The message priority</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reply-to</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reply-to destination name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reply-to-destination-type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reply-to destination type (<code>queue</code> (default), <code>topic</code>)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>destination-type</code> and <code>reply-to-destination-type</code> must be either <code>queue</code> (default) or <code>topic</code>.
+Any other value is rejected and fail the deployment.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_outgoing_jms_message_metadata"><a class="anchor" href="#_outgoing_jms_message_metadata"></a>Outgoing JMS message metadata</h5>
+<div class="paragraph">
+<p>You can customize the <em>routing</em> and the content of the outgoing JMS message by adding an instance of <code>io.smallrye.reactive.messaging.jms.OutgoingJmsMessageMetadata</code> to the message metadata.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_receiving_jms_messages"><a class="anchor" href="#_receiving_jms_messages"></a>14.5. Receiving JMS messages</h4>
+<div class="paragraph">
+<p>To send a JMS message, you need to configure the connector as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text"># Queue:
+mp.messaging.incoming.my-channel.connector=smallrye-jms
+mp.messaging.incoming.my-channel.destination=my-queue
+
+# Topic:
+mp.messaging.incoming.my-channel.connector=smallrye-jms
+mp.messaging.incoming.my-channel.destination=my-topic
+mp.messaging.incoming.my-channel.destination-type=topic
+mp.messaging.incoming.my-channel.client-id=my-id</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_receiving_message"><a class="anchor" href="#_receiving_message"></a>Receiving Message</h5>
+<div class="paragraph">
+<p>You can decide to receive <code>io.smallrye.reactive.messaging.jms.IncomingJmsMessage</code> which contains all the details of the underlying JMS Message.
+So you can access properties and metadata.
+You can also use the <code>unwrap</code> method to retrieve the underlying JMS message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("my-channel")
+public CompletionStage&lt;Void&gt; consume(IncomingJmsMessage&lt;String&gt; msg) {
+  int p = msg.getIntProperty("my-property");
+  // ...
+  return msg.ack();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>ReceivedJmsMessage</code> is parameterized with the type of payload.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_receiving_payload"><a class="anchor" href="#_receiving_payload"></a>Receiving payload</h5>
+<div class="paragraph">
+<p>You can also receive the payload directly.
+In the case of objects, the payload is de-serialized using JSON-B is the <code>JMSType</code> is set.
+If not, the default behavior is used (Java deserialization):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("my-channel")
+public void consume(Person person) {
+  System.out.println(person.name());
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_connector_configuration_2"><a class="anchor" href="#_connector_configuration_2"></a>Connector configuration</h5>
+<div class="paragraph">
+<p>The following table summarizes the attribute you can configure on a JMS incoming channel.
+Don&#8217;t forget to prefix them using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Global configuration for all the channels
+mp.messaging.connector.smallrye-jms.attribute=value
+# Configure the specific `my-jms-channel` channel
+mp.messaging.incoming.my-jms-channel.attribute=value</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">destination</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the <code>channel-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The destination name, default to the channel name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">destination-type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>queue</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of destination (<code>queue</code> or <code>topic</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">durable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the JMS Consumer must be durable, if set to <code>true</code>, the destination must be a <code>topic</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selector</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">accept all messages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only messages with properties matching the given selector expression are delivered</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no-local</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to <code>true</code>, do not receive messages produced locally</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">broadcast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not the received message can emitted to several subscribers</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_incoming_message_metadata"><a class="anchor" href="#_incoming_message_metadata"></a>Incoming message metadata</h5>
+<div class="paragraph">
+<p>You can retrieve the incoming message metadata using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Optional&lt;IncomingJmsMessageMetadata&gt; metadata
+    = message.getMetadata(IncomingJmsMessageMetadata.class);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The metadata are represented by the <code>io.smallrye.reactive.messaging.jms.IncomingJmsMessageMetadata</code> class.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_advanced_configuration_2"><a class="anchor" href="#_advanced_configuration_2"></a>14.6. Advanced configuration</h4>
+<div class="paragraph">
+<p>The connector uses a thread pool to handle some interaction with the broker (for example, to handle acknowledgment).
+You can configure the maximum number of thread and the time to live using MicroProfile Config:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Pool size, default is 10
+smallrye.jms.threads.max-pool-size=20
+# ttl (in second) of idle threads, 60 seconds by default.
+smallrye.jms.threads.ttl=120</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_without_the_infrastructure"><a class="anchor" href="#_testing_without_the_infrastructure"></a>15. Testing without the infrastructure</h3>
+<div class="paragraph">
+<p>It&#8217;s not rare to have to test your application but deploying the infrastructure can be cumbersome.
+While Docker or Test Containers have improved the the testing experience, you may want to <em>mock</em> this infrastructure.</p>
+</div>
+<div class="paragraph">
+<p>SmallRye Reactive Messaging proposes an <em>in-memory</em> connector for this exact purpose.
+It allows switching the connector used for a channel with an <em>in-memory</em> connector.
+This connector can then provide a way to send messages for incoming channels, or check the received messages for outgoing
+channels.</p>
+</div>
+<div class="paragraph">
+<p>To use the <em>in-memory</em> connector, you need to add the following dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+  &lt;artifactId&gt;smallrye-reactive-messaging-in-memory&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, in a test, you can do something like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// ...
+import io.smallrye.reactive.messaging.connectors.InMemoryConnector;
+import io.smallrye.reactive.messaging.connectors.InMemorySource;
+import io.smallrye.reactive.messaging.connectors.InMemorySink;
+// ...
+
+@Test
+class MyTest {
+
+    // 1. Switch the channels to the in-memory connector:
+    @BeforeAll
+    public static void switchMyChannels() {
+        InMemoryConnector.switchChannelToInMemory("prices", "processed-prices");
+    }
+
+    // 2. Don't forget to reset the channel after the tests:
+    @AfterAll
+    public static void revertMyChannels() {
+        InMemoryConnector.clear();
+    }
+
+    // 3. Inject the in-memory connector in your test,
+    // or use the bean manager to retrieve the instance
+    @Inject @Any
+    InMemoryConnector connector;
+
+    @Test
+    void test() {
+      // 4. Retrieves the in-memory source to send message
+      InMemorySource&lt;Integer&gt; prices = connector.source("prices");
+      // 5. Retrieves the in-memory sink to check what is received
+      InMemorySink&lt;Integer&gt; results = connector.sink("processed-prices");
+
+      // 6. Send fake messages:
+      prices.send(1);
+      prices.send(2);
+      prices.send(3);
+
+      // 7. Check you have receives the expected messages
+      assertThat(results.received()).hasSize(3)
+        .extracting(Message::getPayload).containsExactly(2, 3, 4);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This connector has been designed for testing purpose only.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_advanced_and_experimental_features"><a class="anchor" href="#_advanced_and_experimental_features"></a>16. Advanced and Experimental features</h3>
+<div class="sect3">
+<h4 id="_merge"><a class="anchor" href="#_merge"></a>16.1. @Merge</h4>
+<div class="paragraph">
+<p>The <code>@Merge</code> annotation can be used on a method annotated with <code>@Incoming</code> to subscribed to all matching `@Outgoing
+channels. For example, if you have several method producing data to a channel named "sink", the following method receives
+all of them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Incoming("sink")
+@Merge
+@Acknowledgment(Acknowledgment.Mode.NONE)
+public CompletionStage&lt;Void&gt; justASink(Message&lt;String&gt; ignored) {
+  return CompletableFuture.completedFuture(null);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>@Merge</code> annotation can be configured with a <em>merge policy</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ONE</code> - Pick the first source and use only this one.</p>
+</li>
+<li>
+<p><code>MERGE</code> - Merge the different sources. This strategy emits the items as they come. (default)</p>
+</li>
+<li>
+<p><code>CONCAT</code> - Concat the sources.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_broadcast"><a class="anchor" href="#_broadcast"></a>16.2. @Broadcast</h4>
+<div class="paragraph">
+<p>The <code>@Broadcast</code> annotation can be used on a method annotation with <code>@Outgoing</code> to broadcast the emitted messages to all
+the matching subscribers:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Outgoing("Y")
+@Incoming("X")
+@Broadcast
+public String process(String s) {
+  return s.toUpperCase();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_channel"><a class="anchor" href="#_channel"></a>16.3. @Channel</h4>
+<div class="paragraph">
+<p><code>@Channel</code> (<code>org.eclipse.microprofile.reactive.messaging.Channel</code>) is a qualifier to inject a <em>channel</em> into a regular CDI bean.
+It&#8217;s used to bridge the <em>imperative</em> and <em>reactive</em> worlds, or retrieve channels managed by Reactive Messaging.</p>
+</div>
+<div class="paragraph">
+<p>You can retrieve a channel using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject
+@Channel("hello")
+private Publisher&lt;Message&lt;String&gt;&gt; field;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The value indicates the name of the channel. You can inject a channel as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Publisher&lt;Message&lt;X&gt;&gt;</code> or <code>Publisher&lt;X&gt;</code></p>
+</li>
+<li>
+<p><code>PublisherBuilder&lt;Message&lt;X&gt;&gt;</code> or <code>PublisherBuilder&lt;X&gt;</code></p>
+</li>
+<li>
+<p><code>Flowable&lt;Message&lt;X&gt;&gt;</code> or <code>Flowable&lt;X&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You must have a <code>@Incoming("hello")</code> somewhere in your application (meaning a method consuming messages transiting on the channel <code>hello</code>),
+ or a sink of message configured (<code>mp.messaging.outgoing.hello&#8230;&#8203;</code>)</p>
+</div>
+<div class="paragraph">
+<p>You can also emits data to a channel using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject @Channel("hello")
+Emitter&lt;String&gt; emitter;
+
+// ...
+emitter.send("a").send("b");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can inject an <code>org.eclipse.microprofile.reactive.messaging.Emitter&lt;T&gt;</code>.
+To use an <code>Emitter</code> for the channel <code>hello</code>, you need a <code>@Incoming("hello")</code> somewhere in your code (or in your configuration).</p>
+</div>
+<div class="paragraph">
+<p>When injecting an <code>Emitter</code> you can configure how the back-pressure is handled.
+The <code>OnOverflow</code> annotation configures what needs to happen when you emit payloads/messages faster than the downstream can consumes.
+By default a buffer of 127 items is used to manage <em>bumps</em>.
+You can change this behavior as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject
+@Channel("hello")
+@OnOverflow(value = OnOverflow.Strategy.BUFFER, bufferSize = 300)
+Emitter&lt;String&gt; emitter;
+
+// ...
+emitter.send("a").send("b");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this snippet, the buffer size is set to <code>300</code>. If you omit the <code>bufferSize</code> (in conjunction with the <code>BUFFER</code> strategy) an unbounded buffer is used.
+The <code>value</code> attribute can be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>OnOverflow.Strategy.BUFFER</code> - use a buffer to store the elements until they are consumed. If
+the buffer is full, a failure is propagated (and the thread using the emitted gets an exception)</p>
+</li>
+<li>
+<p><code>OnOverflow.Strategy.UNBOUNDED_BUFFER</code> - use an unbounded buffer to store the elements</p>
+</li>
+<li>
+<p><code>OnOverflow.Strategy.DROP</code> - drops the most recent value if the downstream can&#8217;t keep up. It means that new value
+emitted by the emitter are ignored.</p>
+</li>
+<li>
+<p><code>OnOverflow.Strategy.FAIL</code> - propagates a failure in case the downstream can&#8217;t keep up.</p>
+</li>
+<li>
+<p><code>OnOverflow.Strategy.LATEST</code> - keeps only the latest value, dropping any previous value if the downstream can&#8217;t keep up.</p>
+</li>
+<li>
+<p><code>OnOverflow.Strategy.NONE</code> - ignore the back-pressure signals letting the downstream consumer to implement a strategy.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here are some examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject
+@Channel("hello") // Buffer strategy using the default buffer size
+Emitter&lt;String&gt; emitter;
+
+@Inject
+@Channel("hello")
+@OnOverflow(value = OnOverflow.Strategy.UNBOUNDED_BUFFER) // Buffer strategy, unbounded buffer
+Emitter&lt;String&gt; emitter;
+
+@Inject
+@Channel("hello")
+@OnOverflow(value = OnOverflow.Strategy.DROP) // Drop the most recent values
+Emitter&lt;String&gt; emitter;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default buffer size (<code>128</code>) can be configured using the <code>mp.messaging.emitter.default-buffer-size</code> property set using MicroProfile Config.
+Note that this value is only applied when <code>OnOverflow</code> is not used.</p>
+</div>
+<div class="paragraph">
+<p>An emitter can also send messages directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject
+@Channel("hello")
+Emitter&lt;String&gt; emitter;
+
+// ...
+emitter.send(Message.of("hello"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When sending a payload, the <code>send</code> method returns a <code>CompletionStage&lt;Void&gt;</code> completed when the message is acknowledged:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject
+@Channel("hello")
+Emitter&lt;String&gt; emitter;
+
+// ...
+CompletionStage&lt;Void&gt; cs = emitter.send("hello");</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Deprecation</div>
+<div class="paragraph">
+<p>The former <code>@Stream</code> annotation has been removed in 1.1.x.
+The <code>io.smallrye.reactive.messaging.annotations.Channel</code> annotation is now deprecated and use the one defined in the specification (<code>org.eclipse.microprofile.reactive.messaging.Channel</code>).
+The <code>io.smallrye.reactive.messaging.annotations.Emitter</code> class is now deprecated and use the one defined in the specification (<code>org.eclipse.microprofile.reactive.messaging.Emitter</code>).
+The <code>io.smallrye.reactive.messaging.annotations.OnOverflow</code> annotation is now deprecated and use the one defined in the specification (<code>org.eclipse.microprofile.reactive.messaging.OnOverflow</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_logging"><a class="anchor" href="#_logging"></a>16.4. Logging</h4>
+<div class="paragraph">
+<p>The logging uses SLF4J, check the <a href="https://www.slf4j.org/">SLF4J web site</a> for further details.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_strict_binding_mode"><a class="anchor" href="#_strict_binding_mode"></a>16.5. Strict Binding Mode</h4>
+<div class="paragraph">
+<p>By default, SmallRye Reactive Messaging does not enforce whether all <em>mediators</em> are connected. It just print a warning
+message. The strict mode fails the deployment if some "incoming" are not connected to "outgoing". To enable this mode,
+pass the <code>-Dsmallrye-messaging-strict-binding=true</code> to the command line.</p>
+</div>
+</div>
+</div>
+</article>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
