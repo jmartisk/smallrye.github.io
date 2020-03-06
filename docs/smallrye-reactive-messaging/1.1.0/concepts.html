@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: SmallRye documentation</title>
+    <title>Concepts :: SmallRye documentation</title>
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -150,8 +150,8 @@
   <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/concepts.adoc">Edit this Page</a></div>
   </div>
 <article class="doc">
-<div class="sect1">
-<h2 id="_concepts"><a class="anchor" href="#_concepts"></a>Concepts</h2>
+<h1 class="page">Concepts</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>MicroProfile Reactive Messaging proposes a model to build data streaming application using a CDI development model. It
@@ -173,8 +173,11 @@ is based on 3 main concepts:</p>
 <div class="paragraph">
 <p>Behind the scene, SmallRye Reactive Streams composes <em>Reactive Streams</em> and ensures the consistent flow of messages.</p>
 </div>
-<div class="sect2">
-<h3 id="_messages"><a class="anchor" href="#_messages"></a>Messages</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_messages"><a class="anchor" href="#_messages"></a>Messages</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>A <code>Message</code> (defined by <code>org.eclipse.microprofile.reactive.messaging.Message</code>) is an envelope around a payload. The
 <code>Message</code> interface just offers a way to retrieve the payload (<code>getPayload</code>), a set of <em>metadata</em> and a method to acknowledge the message (<code>ack</code>).</p>
@@ -200,8 +203,10 @@ message containing a <code>String</code> payload.</p>
 <p>Acknowledgement is covered below, in a dedicated section.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_incoming"><a class="anchor" href="#_incoming"></a>Incoming</h3>
+</div>
+<div class="sect1">
+<h2 id="_incoming"><a class="anchor" href="#_incoming"></a>Incoming</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>Incoming</code> is an annotation indicating that the method consumes a stream. The name of the stream is given as attribute
 such as in:</p>
@@ -223,8 +228,10 @@ public void consume(Message&lt;String&gt; s) {
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_outgoing"><a class="anchor" href="#_outgoing"></a>Outgoing</h3>
+</div>
+<div class="sect1">
+<h2 id="_outgoing"><a class="anchor" href="#_outgoing"></a>Outgoing</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>Outgoing</code> is an annotation indicating that the method feeds a stream. The name of the stream is given as attribute:</p>
 </div>
@@ -245,8 +252,10 @@ public Message&lt;String&gt; produce() {
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_methods_with_outgoing_and_incoming"><a class="anchor" href="#_methods_with_outgoing_and_incoming"></a>Methods with @Outgoing and @Incoming</h3>
+</div>
+<div class="sect1">
+<h2 id="_methods_with_outgoing_and_incoming"><a class="anchor" href="#_methods_with_outgoing_and_incoming"></a>Methods with @Outgoing and @Incoming</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Of course, methods can also use both annotations to transform the incoming messages:</p>
 </div>
@@ -268,8 +277,10 @@ public String toUpperCase(String input) {
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_binding_matching_outgoing_to_incoming"><a class="anchor" href="#_binding_matching_outgoing_to_incoming"></a>Binding matching @Outgoing to @Incoming</h3>
+</div>
+<div class="sect1">
+<h2 id="_binding_matching_outgoing_to_incoming"><a class="anchor" href="#_binding_matching_outgoing_to_incoming"></a>Binding matching @Outgoing to @Incoming</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>SmallRye Reactive Messaging automatically binds matching <code>@Outgoing</code> to <code>@Incoming</code> to form a chain:</p>
 </div>
@@ -284,8 +295,10 @@ amount a set of beans. Remote interactions are possible using a <em>transport</e
 section.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_metadata_and_propagation"><a class="anchor" href="#_metadata_and_propagation"></a>Metadata and Propagation</h3>
+</div>
+<div class="sect1">
+<h2 id="_metadata_and_propagation"><a class="anchor" href="#_metadata_and_propagation"></a>Metadata and Propagation</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Each message has a set of metadata (potentially empty).
 These metadata are retrieved with <code>org.eclipse.microprofile.reactive.messaging.Message.getMetadata</code>.
@@ -335,7 +348,6 @@ Metadata are composed by objects (identified by their class) and can be retrieve
 <div class="paragraph">
 <p>Metadata are propagated though the chain when your method receives a single <em>payloads</em>.
 In all the other cases (stream, receiving <code>Message</code> and not payload), you need to propagate the metadata yourself, for example, using <code>message.withMetadata(incoming.getMetadata())</code>.</p>
-</div>
 </div>
 </div>
 </div>

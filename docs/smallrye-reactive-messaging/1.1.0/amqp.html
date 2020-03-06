@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: SmallRye documentation</title>
+    <title>Receiving and Sending AMQP 1.0 Messages :: SmallRye documentation</title>
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -150,15 +150,18 @@
   <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/amqp.adoc">Edit this Page</a></div>
   </div>
 <article class="doc">
-<div class="sect1">
-<h2 id="_receiving_and_sending_amqp_1_0_messages"><a class="anchor" href="#_receiving_and_sending_amqp_1_0_messages"></a>Receiving and Sending AMQP 1.0 Messages</h2>
+<h1 class="page">Receiving and Sending AMQP 1.0 Messages</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can connect to an AMQP broker or server as a source or sink.
 The AMQP support is based on the <a href="https://vertx.io/docs/vertx-amqp-client/java/">Vert.x AMQP Client</a>.</p>
 </div>
-<div class="sect2">
-<h3 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To enable the AMQP support, you need the following dependency:</p>
 </div>
@@ -172,8 +175,10 @@ The AMQP support is based on the <a href="https://vertx.io/docs/vertx-amqp-clien
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_receiving_messages_from_amqp"><a class="anchor" href="#_receiving_messages_from_amqp"></a>Receiving messages from AMQP</h3>
+</div>
+<div class="sect1">
+<h2 id="_receiving_messages_from_amqp"><a class="anchor" href="#_receiving_messages_from_amqp"></a>Receiving messages from AMQP</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code>mp.messaging.incoming.data.address=data
@@ -216,8 +221,10 @@ int priority = metadata.getPriority();</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_sending_messages_to_amqp"><a class="anchor" href="#_sending_messages_to_amqp"></a>Sending messages to AMQP</h3>
+</div>
+<div class="sect1">
+<h2 id="_sending_messages_to_amqp"><a class="anchor" href="#_sending_messages_to_amqp"></a>Sending messages to AMQP</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.address=data
@@ -288,8 +295,10 @@ Message&lt;String&gt; outgoing = incoming.withMetadata(incoming.getMetadata().wi
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_global_configuration"><a class="anchor" href="#_global_configuration"></a>Global configuration</h3>
+</div>
+<div class="sect1">
+<h2 id="_global_configuration"><a class="anchor" href="#_global_configuration"></a>Global configuration</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The host, port, username, password, SSL connection, reconnect attempts, reconnect interval,
 and connection timeout can also be configured using the <code>amqp-host</code>, <code>amqp-port</code>, <code>amqp-username</code>,
@@ -348,7 +357,6 @@ mp.messaging.incoming.data.client-options-name=custom-client-config</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code>amqp-client-options-name=custom-client-config</code></pre>
-</div>
 </div>
 </div>
 </div>

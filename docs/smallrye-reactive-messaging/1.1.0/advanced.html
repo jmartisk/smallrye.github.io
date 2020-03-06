@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: SmallRye documentation</title>
+    <title>Advanced and Experimental features :: SmallRye documentation</title>
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -150,11 +150,10 @@
   <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/advanced.adoc">Edit this Page</a></div>
   </div>
 <article class="doc">
+<h1 class="page">Advanced and Experimental features</h1>
 <div class="sect1">
-<h2 id="_advanced_and_experimental_features"><a class="anchor" href="#_advanced_and_experimental_features"></a>Advanced and Experimental features</h2>
+<h2 id="_merge"><a class="anchor" href="#_merge"></a>@Merge</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_merge"><a class="anchor" href="#_merge"></a>@Merge</h3>
 <div class="paragraph">
 <p>The <code>@Merge</code> annotation can be used on a method annotated with <code>@Incoming</code> to subscribed to all matching `@Outgoing
 channels. For example, if you have several method producing data to a channel named "sink", the following method receives
@@ -187,8 +186,10 @@ public CompletionStage&lt;Void&gt; justASink(Message&lt;String&gt; ignored) {
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_broadcast"><a class="anchor" href="#_broadcast"></a>@Broadcast</h3>
+</div>
+<div class="sect1">
+<h2 id="_broadcast"><a class="anchor" href="#_broadcast"></a>@Broadcast</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The <code>@Broadcast</code> annotation can be used on a method annotation with <code>@Outgoing</code> to broadcast the emitted messages to all
 the matching subscribers:</p>
@@ -204,8 +205,10 @@ public String process(String s) {
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_channel"><a class="anchor" href="#_channel"></a>@Channel</h3>
+</div>
+<div class="sect1">
+<h2 id="_channel"><a class="anchor" href="#_channel"></a>@Channel</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>@Channel</code> (<code>org.eclipse.microprofile.reactive.messaging.Channel</code>) is a qualifier to inject a <em>channel</em> into a regular CDI bean.
 It&#8217;s used to bridge the <em>imperative</em> and <em>reactive</em> worlds, or retrieve channels managed by Reactive Messaging.</p>
@@ -370,19 +373,22 @@ The <code>io.smallrye.reactive.messaging.annotations.OnOverflow</code> annotatio
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_logging"><a class="anchor" href="#_logging"></a>Logging</h3>
+</div>
+<div class="sect1">
+<h2 id="_logging"><a class="anchor" href="#_logging"></a>Logging</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The logging uses SLF4J, check the <a href="https://www.slf4j.org/">SLF4J web site</a> for further details.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_strict_binding_mode"><a class="anchor" href="#_strict_binding_mode"></a>Strict Binding Mode</h3>
+</div>
+<div class="sect1">
+<h2 id="_strict_binding_mode"><a class="anchor" href="#_strict_binding_mode"></a>Strict Binding Mode</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>By default, SmallRye Reactive Messaging does not enforce whether all <em>mediators</em> are connected. It just print a warning
 message. The strict mode fails the deployment if some "incoming" are not connected to "outgoing". To enable this mode,
 pass the <code>-Dsmallrye-messaging-strict-binding=true</code> to the command line.</p>
-</div>
 </div>
 </div>
 </div>

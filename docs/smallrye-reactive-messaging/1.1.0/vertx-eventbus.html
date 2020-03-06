@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: SmallRye documentation</title>
+    <title>Interacting with the Vert.x Eventbus :: SmallRye documentation</title>
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -150,15 +150,18 @@
   <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/vertx-eventbus.adoc">Edit this Page</a></div>
   </div>
 <article class="doc">
-<div class="sect1">
-<h2 id="_interacting_with_the_vert_x_eventbus"><a class="anchor" href="#_interacting_with_the_vert_x_eventbus"></a>Interacting with the Vert.x Eventbus</h2>
+<h1 class="page">Interacting with the Vert.x Eventbus</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Vert.x Eventbus is the backbone of Vert.x applications. It allows different application components to interact in
 an asynchronous way.</p>
 </div>
-<div class="sect2">
-<h3 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To enable the Vert.x EventBus support, you need the following dependency:</p>
 </div>
@@ -172,8 +175,10 @@ an asynchronous way.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_retrieving_messages_from_the_event_bus"><a class="anchor" href="#_retrieving_messages_from_the_event_bus"></a>Retrieving messages from the event bus</h3>
+</div>
+<div class="sect1">
+<h2 id="_retrieving_messages_from_the_event_bus"><a class="anchor" href="#_retrieving_messages_from_the_event_bus"></a>Retrieving messages from the event bus</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code>mp.messaging.incoming.data.address=&lt;the-eventbus-address&gt;
@@ -192,8 +197,10 @@ to many subscribers.</p>
 body. From the <code>EventBusMessage</code>, you can retrieve the headers, address&#8230;&#8203;</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_sending_messages_to_the_event_bus"><a class="anchor" href="#_sending_messages_to_the_event_bus"></a>Sending messages to the event bus</h3>
+</div>
+<div class="sect1">
+<h2 id="_sending_messages_to_the_event_bus"><a class="anchor" href="#_sending_messages_to_the_event_bus"></a>Sending messages to the event bus</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.address=&lt;the-eventbus-address&gt;
@@ -212,7 +219,6 @@ specifies the reply timeout.</p>
 </div>
 <div class="paragraph">
 <p>The event bus message is created from the Reactive Messaging message. The payload is passed as body.</p>
-</div>
 </div>
 </div>
 </div>

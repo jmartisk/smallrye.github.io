@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: SmallRye documentation</title>
+    <title>Processing data :: SmallRye documentation</title>
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -150,14 +150,17 @@
   <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/processor.adoc">Edit this Page</a></div>
   </div>
 <article class="doc">
-<div class="sect1">
-<h2 id="_processing_data"><a class="anchor" href="#_processing_data"></a>Processing data</h2>
+<h1 class="page">Processing data</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>There are several ways to manipulate items transiting in a streams.</p>
 </div>
-<div class="sect2">
-<h3 id="_manipulating_items_one_by_one"><a class="anchor" href="#_manipulating_items_one_by_one"></a>Manipulating items one by one</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_manipulating_items_one_by_one"><a class="anchor" href="#_manipulating_items_one_by_one"></a>Manipulating items one by one</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The first possibility is to implement a method with both <code>@Incoming</code> and <code>@Outgoing</code> and receiving the <code>Message</code> or
 payload one by one. For each input, an output is produced. This output can be generated asynchronously by returning a
@@ -183,8 +186,10 @@ payload one by one. For each input, an output is produced. This output can be ge
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_consuming_one_items_and_producing_a_streams"><a class="anchor" href="#_consuming_one_items_and_producing_a_streams"></a>Consuming one items and producing a streams</h3>
+</div>
+<div class="sect1">
+<h2 id="_consuming_one_items_and_producing_a_streams"><a class="anchor" href="#_consuming_one_items_and_producing_a_streams"></a>Consuming one items and producing a streams</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Another possibility is to consume the items one by one, but instead of producing a single result, produce a stream,
 potentially empty. The following method signatures are supported:</p>
@@ -246,8 +251,10 @@ potentially empty. The following method signatures are supported:</p>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_creating_a_reactive_stream_processor"><a class="anchor" href="#_creating_a_reactive_stream_processor"></a>Creating a Reactive Stream Processor</h3>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_reactive_stream_processor"><a class="anchor" href="#_creating_a_reactive_stream_processor"></a>Creating a Reactive Stream Processor</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>A <em>Processor</em> is a Reactive Stream entity acting as a <em>subscriber</em> (so consume data) and <em>publisher</em> (so publish data).
 To describe your data transformation logic, you can create and return a <code>Processor</code> (or a <code>ProcessorBuilder</code>):</p>
@@ -296,8 +303,10 @@ To describe your data transformation logic, you can create and return a <code>Pr
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_manipulating_streams"><a class="anchor" href="#_manipulating_streams"></a>Manipulating streams</h3>
+</div>
+<div class="sect1">
+<h2 id="_manipulating_streams"><a class="anchor" href="#_manipulating_streams"></a>Manipulating streams</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>You can also transform streams using the following methods:</p>
 </div>
@@ -318,8 +327,10 @@ To describe your data transformation logic, you can create and return a <code>Pr
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_reactive_streams_reactive_stream_operators_rx_java"><a class="anchor" href="#_reactive_streams_reactive_stream_operators_rx_java"></a>Reactive Streams, Reactive Stream Operators, RX Java</h3>
+</div>
+<div class="sect1">
+<h2 id="_reactive_streams_reactive_stream_operators_rx_java"><a class="anchor" href="#_reactive_streams_reactive_stream_operators_rx_java"></a>Reactive Streams, Reactive Stream Operators, RX Java</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>SmallRye Reactive Messaging supports:</p>
 </div>
@@ -332,7 +343,6 @@ To describe your data transformation logic, you can create and return a <code>Pr
 <p><code>Processor</code>, <code>ProcessorBuilder</code> (MicroProfile Reactive Streams Operators)</p>
 </li>
 </ul>
-</div>
 </div>
 </div>
 </div>

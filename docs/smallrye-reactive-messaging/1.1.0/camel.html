@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: SmallRye documentation</title>
+    <title>Integrating with Apache Camel :: SmallRye documentation</title>
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -150,15 +150,18 @@
   <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/camel.adoc">Edit this Page</a></div>
   </div>
 <article class="doc">
-<div class="sect1">
-<h2 id="_integrating_with_apache_camel"><a class="anchor" href="#_integrating_with_apache_camel"></a>Integrating with Apache Camel</h2>
+<h1 class="page">Integrating with Apache Camel</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can receive messages from a Camel Route or send messages to a Camel route. It give you the ability to connect to
 almost any existing system.</p>
 </div>
-<div class="sect2">
-<h3 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To enable the Camel support, you need the following dependency:</p>
 </div>
@@ -172,8 +175,10 @@ almost any existing system.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_reactive"><a class="anchor" href="#_camel_reactive"></a>Camel Reactive</h3>
+</div>
+<div class="sect1">
+<h2 id="_camel_reactive"><a class="anchor" href="#_camel_reactive"></a>Camel Reactive</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>When using the dependency, your bean can retrieve a
  <code>org.apache.camel.component.reactive.streams.api.CamelReactiveStreamsService</code> object:</p>
@@ -190,8 +195,10 @@ private CamelReactiveStreamsService camel_reactive;</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_using_camel_route_in_outgoing_method"><a class="anchor" href="#_using_camel_route_in_outgoing_method"></a>Using Camel Route in @Outgoing method</h3>
+</div>
+<div class="sect1">
+<h2 id="_using_camel_route_in_outgoing_method"><a class="anchor" href="#_using_camel_route_in_outgoing_method"></a>Using Camel Route in @Outgoing method</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Here is an example of method annotated with <code>@Outgoing</code> directly using a Camel route:</p>
 </div>
@@ -204,8 +211,10 @@ public Publisher&lt;Exchange&gt; source() {
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_using_camel_route_in_incoming_method"><a class="anchor" href="#_using_camel_route_in_incoming_method"></a>Using Camel Route in @Incoming method</h3>
+</div>
+<div class="sect1">
+<h2 id="_using_camel_route_in_incoming_method"><a class="anchor" href="#_using_camel_route_in_incoming_method"></a>Using Camel Route in @Incoming method</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Here is an example of method annotated with <code>@Incoming</code> directly using a Camel route:</p>
 </div>
@@ -229,8 +238,10 @@ public CompletionStage&lt;Void&gt; sink(String value) {
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_retrieving_messages_from_a_camel_route"><a class="anchor" href="#_retrieving_messages_from_a_camel_route"></a>Retrieving messages from a Camel Route</h3>
+</div>
+<div class="sect1">
+<h2 id="_retrieving_messages_from_a_camel_route"><a class="anchor" href="#_retrieving_messages_from_a_camel_route"></a>Retrieving messages from a Camel Route</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The previous example requires your code to deal with Maven route directly. It can be externalized to the configuration as
 follows:</p>
@@ -255,8 +266,10 @@ mp.messaging.incoming.data.endpoint-uri:seda:my-route</code></pre>
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_forwarding_messages_to_a_camel_route"><a class="anchor" href="#_forwarding_messages_to_a_camel_route"></a>Forwarding messages to a Camel Route</h3>
+</div>
+<div class="sect1">
+<h2 id="_forwarding_messages_to_a_camel_route"><a class="anchor" href="#_forwarding_messages_to_a_camel_route"></a>Forwarding messages to a Camel Route</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The following configuration describe a sink using a Camel route:</p>
 </div>
@@ -301,7 +314,6 @@ public class BeanWithCamelSinkUsingRSRoute extends RouteBuilder {
     from("reactive-streams:in").to("file:./target?fileName=values.txt&amp;fileExist=append");
   }
 }</code></pre>
-</div>
 </div>
 </div>
 </div>

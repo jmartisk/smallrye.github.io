@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: SmallRye documentation</title>
+    <title>Consuming data :: SmallRye documentation</title>
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -150,14 +150,17 @@
   <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/sinks.adoc">Edit this Page</a></div>
   </div>
 <article class="doc">
-<div class="sect1">
-<h2 id="_consuming_data"><a class="anchor" href="#_consuming_data"></a>Consuming data</h2>
+<h1 class="page">Consuming data</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>To consume data (act as a data sink), you just need a method only annotated with <code>@Incoming</code>.</p>
 </div>
-<div class="sect2">
-<h3 id="_supported_signatures"><a class="anchor" href="#_supported_signatures"></a>Supported Signatures</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_supported_signatures"><a class="anchor" href="#_supported_signatures"></a>Supported Signatures</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -183,8 +186,10 @@ Notice that, when returning a <code>CompletionStage</code>, the method won&#8217
 <code>CompletionStage</code> is completed.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h3>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The following code snippet provides example of the different variants of signature.</p>
 </div>
@@ -240,7 +245,6 @@ public class ConsumptionExamples {
   }
 
 }</code></pre>
-</div>
 </div>
 </div>
 </div>

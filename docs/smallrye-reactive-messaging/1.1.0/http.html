@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: SmallRye documentation</title>
+    <title>Emitting HTTP requests :: SmallRye documentation</title>
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -150,8 +150,8 @@
   <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/http.adoc">Edit this Page</a></div>
   </div>
 <article class="doc">
-<div class="sect1">
-<h2 id="_emitting_http_requests"><a class="anchor" href="#_emitting_http_requests"></a>Emitting HTTP requests</h2>
+<h1 class="page">Emitting HTTP requests</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can also <em>push</em> incoming messages to an HTTP endpoint using the <em>HTTP connector</em>.
@@ -160,8 +160,11 @@ It maps the messages into HTTP requests and sends the <em>payload</em> in the re
 <div class="paragraph">
 <p>Note that this connector uses a reactive and non-blocking HTTP client.</p>
 </div>
-<div class="sect2">
-<h3 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To enable the HTTP support, you need the following dependency:</p>
 </div>
@@ -175,8 +178,10 @@ It maps the messages into HTTP requests and sends the <em>payload</em> in the re
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_forwarding_messages_to_http"><a class="anchor" href="#_forwarding_messages_to_http"></a>Forwarding messages to HTTP</h3>
+</div>
+<div class="sect1">
+<h2 id="_forwarding_messages_to_http"><a class="anchor" href="#_forwarding_messages_to_http"></a>Forwarding messages to HTTP</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code>mp.messaging.outgoing.data.url=http://localhost:8089
@@ -217,8 +222,10 @@ mp.messaging.outgoing.data.connector=smallrye-http</code></pre>
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_customizing_the_http_request"><a class="anchor" href="#_customizing_the_http_request"></a>Customizing the HTTP request</h3>
+</div>
+<div class="sect1">
+<h2 id="_customizing_the_http_request"><a class="anchor" href="#_customizing_the_http_request"></a>Customizing the HTTP request</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>By attaching an instance of <code>io.smallrye.reactive.messaging.http.HttpResponseMetadata</code> in the message you produce, you can configure the dispatching:</p>
 </div>
@@ -236,14 +243,15 @@ mp.messaging.outgoing.data.connector=smallrye-http</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_supported_payload"><a class="anchor" href="#_supported_payload"></a>Supported payload</h3>
+</div>
+<div class="sect1">
+<h2 id="_supported_payload"><a class="anchor" href="#_supported_payload"></a>Supported payload</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Supported payloads are:
 * String
 * Vert.x Buffers, byte array, <code>ByteBuffer</code>
 * Vert.x <code>JsonObject</code> and <code>JsonArray</code></p>
-</div>
 </div>
 </div>
 </div>

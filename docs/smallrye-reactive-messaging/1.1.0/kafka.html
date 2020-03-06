@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: SmallRye documentation</title>
+    <title>Receiving and Sending messages with Apache Kafka :: SmallRye documentation</title>
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -150,15 +150,18 @@
   <div class="edit-this-page"><a href="https://github.com/jmartisk/smallrye-reactive-messaging/edit/docs-test/doc/modules/ROOT/pages/kafka.adoc">Edit this Page</a></div>
   </div>
 <article class="doc">
-<div class="sect1">
-<h2 id="_receiving_and_sending_messages_with_apache_kafka"><a class="anchor" href="#_receiving_and_sending_messages_with_apache_kafka"></a>Receiving and Sending messages with Apache Kafka</h2>
+<h1 class="page">Receiving and Sending messages with Apache Kafka</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Kafka Connector let you interact with a Kafka broker, and so retrieve and send Kafka messages.
 The Kafka support is based on the <a href="https://vertx.io/docs/vertx-kafka-client/java/">Vert.x Kafka Client</a>.</p>
 </div>
-<div class="sect2">
-<h3 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dependency"><a class="anchor" href="#_dependency"></a>Dependency</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To enable the Kafka support, you need the following dependency:</p>
 </div>
@@ -172,8 +175,10 @@ The Kafka support is based on the <a href="https://vertx.io/docs/vertx-kafka-cli
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_retrieving_messages_from_kafka"><a class="anchor" href="#_retrieving_messages_from_kafka"></a>Retrieving messages from Kafka</h3>
+</div>
+<div class="sect1">
+<h2 id="_retrieving_messages_from_kafka"><a class="anchor" href="#_retrieving_messages_from_kafka"></a>Retrieving messages from Kafka</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To retrieve messages from a Kafka topic, you need the following configuration:</p>
 </div>
@@ -312,8 +317,10 @@ This <code>KafkaRecord</code> provides method to access the value stored in the 
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_writing_messages_in_kafka"><a class="anchor" href="#_writing_messages_in_kafka"></a>Writing messages in Kafka</h3>
+</div>
+<div class="sect1">
+<h2 id="_writing_messages_in_kafka"><a class="anchor" href="#_writing_messages_in_kafka"></a>Writing messages in Kafka</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To send messages to a Kafka topic, you need the following configuration:</p>
 </div>
@@ -404,7 +411,6 @@ Use <code>io.smallrye.reactive.messaging.kafka.OutgoingKafkaRecordMetadata.build
   public Message&lt;String&gt; produce(Message&lt;String&gt; incoming) {
     return KafkaRecord.of("topic", "key", incoming.getPayload());
   }</code></pre>
-</div>
 </div>
 </div>
 </div>
