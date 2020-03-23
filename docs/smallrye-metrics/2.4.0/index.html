@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>SmallRye Metrics Documentation :: SmallRye documentation</title>
-    <meta name="generator" content="Antora 2.2.0">
+    <meta name="generator" content="Antora 2.3.0-beta.1">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
   <body class="article">
@@ -27,7 +27,6 @@
           <div class="navbar-dropdown">
             <a class="navbar-item" href="../../index/index/index.html">Index</a>
             <a class="navbar-item" href="index.html">SmallRye Metrics</a>
-            <a class="navbar-item" href="../../smallrye-reactive-messaging/1.1.0/index.html">SmallRye Reactive Messaging</a>
           </div>
 
         </div>
@@ -60,13 +59,19 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="runtimes-integration.html">Integrating SmallRye Metrics into runtimes</a>
+    <span class="nav-text">Integrating SmallRye Metrics into runtimes</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="runtimes-integration.html#cdi-extension">CDI Extension</a>
+    <a class="nav-link" href="cdi-extension.html">CDI Extension</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="runtimes-integration.html#base-vendor-metrics">Base and vendor metrics</a>
+    <a class="nav-link" href="base-and-vendor-metrics.html">Base and vendor metrics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="metric-registry-lifecycle.html">Metric registry lifecycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jaxrs-metrics.html">JAX-RS metrics</a>
   </li>
 </ul>
   </li>
@@ -100,14 +105,6 @@
         </li>
       </ul>
     </li>
-    <li class="component">
-      <span class="title">SmallRye Reactive Messaging</span>
-      <ul class="versions">
-        <li class="version is-latest">
-          <a href="../../smallrye-reactive-messaging/1.1.0/index.html">1.1.0</a>
-        </li>
-      </ul>
-    </li>
   </ul>
 </div>
 -->
@@ -131,10 +128,23 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>SmallRye Metrics is an implementation of the MicroProfile Metrics specification.</p>
+<p>SmallRye Metrics 2.4 is an implementation of the MicroProfile Metrics 2.3 specification.</p>
 </div>
 <div class="paragraph">
-<p>TODO: come up with something suitable for the index page. A quickstart, a short code example?</p>
+<p>Runtimes that currently use it as their metrics implementation include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://quarkus.io/">Quarkus</a></p>
+</li>
+<li>
+<p><a href="https://wildfly.org/">WildFly</a></p>
+</li>
+<li>
+<p><a href="https://thorntail.io/">Thorntail</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -144,10 +154,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/smallrye/smallrye-metrics/">GitHub project repository</a></p>
+<p><a href="https://github.com/smallrye/smallrye-metrics/">SmallRye Metrics GitHub project repository</a></p>
 </li>
 <li>
-<p><a href="https://github.com/eclipse/microprofile-metrics/">Eclipse MicroProfile Metrics</a></p>
+<p><a href="https://github.com/eclipse/microprofile-metrics/">Eclipse MicroProfile Metrics repository</a></p>
+</li>
+<li>
+<p><a href="https://download.eclipse.org/microprofile/microprofile-metrics-2.3/microprofile-metrics-spec-2.3.html">MicroProfile Metrics 2.3 specification text</a></p>
 </li>
 </ul>
 </div>
